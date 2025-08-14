@@ -1,3 +1,4 @@
+// AuthViewModel.swift
 import Foundation
 import SwiftUI
 
@@ -16,7 +17,7 @@ class AuthViewModel: ObservableObject {
         let body = ["email": email, "password": password]
         request.httpBody = try? JSONSerialization.data(withJSONObject: body)
 
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) { data, _, _ in
             guard let data = data else { return }
 
             do {
@@ -46,7 +47,7 @@ class AuthViewModel: ObservableObject {
         let body = ["email": email, "password": password]
         request.httpBody = try? JSONSerialization.data(withJSONObject: body)
 
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        URLSession.shared.dataTask(with: request) { data, _, _ in
             guard let data = data else { return }
 
             do {
