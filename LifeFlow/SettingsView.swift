@@ -1,7 +1,13 @@
 import SwiftUI
+import UIKit
 
 struct SettingsView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
+    
+    // Fetch from persistent storage
+    @AppStorage("userName") private var name: String = "Your Name"
+    @AppStorage("userEmail") private var email: String = "you@example.com"
+    @AppStorage("profileImageData") private var profileImageData: Data? // Profile image
 
     @State private var notificationsEnabled = true
     @State private var selectedTheme = "System"
@@ -16,14 +22,26 @@ struct SettingsView: View {
                 // Profile
                 Section(header: Text("Profile")) {
                     NavigationLink(destination: EditProfileView()) {
-                        HStack {
-                            Image(systemName: "person.circle.fill")
-                                .font(.title)
-                                .foregroundColor(.blue)
+                        HStack(spacing: 16) {
+                            if let data = profileImageData,
+                               let uiImage = UIImage(data: data) {
+                                Image(uiImage: uiImage)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 50, height: 50)
+                                    .clipShape(Circle())
+                            } else {
+                                Image(systemName: "person.crop.circle.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 50, height: 50)
+                                    .foregroundColor(.blue)
+                            }
+                            
                             VStack(alignment: .leading) {
-                                Text("Anindya Mukhopadhyay")
+                                Text(name) // Dynamic name
                                     .font(.headline)
-                                Text("anindya@example.com")
+                                Text(email) // Dynamic email
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
@@ -60,7 +78,7 @@ struct SettingsView: View {
                     HStack {
                         Text("Developer")
                         Spacer()
-                        Text("Project Builder")
+                        Text("Team Glitch Gods")
                             .foregroundColor(.gray)
                     }
                 }
@@ -80,9 +98,9 @@ struct SettingsView: View {
 }
 
 struct EditProfileView: View {
-    @State private var name = "Anindya Mukhopadhyay"
-    @State private var email = "anindya@example.com"
-
+    @AppStorage("userName") private var name: String = "Your Name"
+    @AppStorage("userEmail") private var email: String = "you@example.com"
+    
     var body: some View {
         Form {
             Section(header: Text("Edit Info")) {
@@ -93,7 +111,7 @@ struct EditProfileView: View {
 
             Section {
                 Button("Save Changes") {
-                    // Save action here
+                    // Auto-saved with @AppStorage
                 }
             }
         }

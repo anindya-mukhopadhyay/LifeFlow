@@ -10,22 +10,22 @@ struct DashboardCardView<Destination: View>: View {
             HStack(spacing: 16) {
                 Image(systemName: icon)
                     .font(.title)
-                    .foregroundColor(.red)
+                    .foregroundColor(.red) // keep brand color
                     .frame(width: 40, height: 40)
-                    .background(Color.red.opacity(0.1))
+                    .background(Color.red.opacity(0.15))
                     .clipShape(Circle())
 
                 Text(title)
                     .font(.headline)
-                    .foregroundColor(.primary)
+                    .foregroundColor(Color.primary) // adapts to dark/light
 
                 Spacer()
 
                 Image(systemName: "chevron.right")
-                    .foregroundColor(.gray)
+                    .foregroundColor(Color(UIColor.tertiaryLabel)) // softer dynamic gray
             }
             .padding()
-            .background(Color.white)
+            .background(Color(UIColor.secondarySystemBackground)) // adapts to mode
             .cornerRadius(16)
             .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: 4)
         }

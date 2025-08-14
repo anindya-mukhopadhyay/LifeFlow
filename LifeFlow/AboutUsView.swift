@@ -1,20 +1,12 @@
-//
 //  AboutUsView.swift
 //  Life   Flow
-//
 //  Created by Anindya Mukhopadhyay on 05/08/25.
 //
 import SwiftUI
-
 struct AboutUsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 20) {
-                Text("About Us")
-                    .font(.largeTitle)
-                    .bold()
-                    .padding(.bottom, 10)
-
                 Image(systemName: "drop.fill")
                     .resizable()
                     .scaledToFit()
@@ -23,7 +15,7 @@ struct AboutUsView: View {
                     .padding(.bottom, 10)
 
                 Text("""
-Welcome to **LifeFlow** – your trusted Smart Blood Donation System made by ***Anindya Mukhopadhyay***.
+Welcome to **LifeFlow** – your trusted Smart Blood Donation System made by **Anindya Mukhopadhyay** and **Aritra Lala** and our UXUI Designer **Sneha Karmakar**.
 
 Our mission is to connect life-saving donors with those in urgent need. Whether you're a hospital looking for a match, or a donor willing to help, LifeDrop simplifies the process.
 
@@ -50,9 +42,9 @@ To build a world where no life is lost due to a shortage of blood. Through innov
                     .padding(.top)
 
                 VStack(alignment: .leading, spacing: 6) {
-                    Text("📧 Email: support@lifedrop.org")
+                    Text("📧 Email: youanindya1@gmail.com")
                     Text("🌐 Website: www.lifeflow.com")
-                    Text("**📍 Location: Newtown,Kolkata, West Bengal, India**")
+                    Text("**📍 Location: Newtown,Kolkata, West Bengal,India**")
                 }
                 .font(.subheadline)
                 .foregroundColor(.gray)

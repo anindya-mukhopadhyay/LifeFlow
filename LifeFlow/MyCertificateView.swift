@@ -22,14 +22,14 @@ struct MyCertificateView: View {
                 .font(.headline)
 
             Text("\nThank you for saving lives!")
-                .foregroundColor(.gray)
+                .foregroundColor(Color(UIColor.secondaryLabel)) // dynamic gray
                 .multilineTextAlignment(.center)
         }
         .padding()
         .frame(width: 300, height: 350)
-        .background(Color.white)
+        .background(Color(UIColor.secondarySystemBackground)) // dynamic card background
         .cornerRadius(20)
-        .shadow(radius: 8)
+        .shadow(color: Color.black.opacity(0.15), radius: 8, x: 0, y: 4)
     }
 
     var body: some View {
@@ -52,6 +52,7 @@ struct MyCertificateView: View {
             Spacer()
         }
         .padding()
+        .background(Color(UIColor.systemBackground)) // dynamic page background
         .navigationTitle("My Certificate")
     }
 

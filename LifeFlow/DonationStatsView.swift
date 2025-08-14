@@ -3,40 +3,68 @@ import Charts
 
 struct DonationStat: Identifiable {
     var id = UUID()
-    let month: String
+    let year: String
     let count: Int
 }
 
 struct DonationStatsView: View {
     let stats: [DonationStat] = [
-        DonationStat(month: "Jan", count: 2),
-        DonationStat(month: "Feb", count: 1),
-        DonationStat(month: "Mar", count: 3),
-        DonationStat(month: "Apr", count: 1),
-        DonationStat(month: "May", count: 2),
-        DonationStat(month: "Jun", count: 0),
-        DonationStat(month: "Jul", count: 4)
+        DonationStat(year: "2019", count: 10),
+        DonationStat(year: "2020", count: 14),
+        DonationStat(year: "2021", count: 7),
+        DonationStat(year: "2022", count: 15),
+        DonationStat(year: "2023", count: 12)
     ]
+
+    private let skyBlue = Color(red: 126/255, green: 200/255, blue: 227/255)
 
     var body: some View {
         NavigationView {
-            VStack(alignment: .leading) {
-                Text("Monthly Donation Stats")
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Yearly Donation Stats")
                     .font(.title2)
+                    .fontWeight(.semibold)
+                    .foregroundColor(.primary)
                     .padding(.horizontal)
 
-                Chart(stats) { stat in
-                    BarMark(
-                        x: .value("Month", stat.month),
-                        y: .value("Donations", stat.count)
-                    )
-                    .foregroundStyle(Color.red)
+                Chart {
+                    ForEach(stats) { stat in
+                        AreaMark(
+                            x: .value("Year", stat.year),
+                            y: .value("Donations", stat.count)
+                        )
+                        .interpolationMethod(.catmullRom) // smooth curve
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [skyBlue.opacity(0.6), skyBlue.opacity(0.15)],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+
+                        LineMark(
+                            x: .value("Year", stat.year),
+                            y: .value("Donations", stat.count)
+                        )
+                        .interpolationMethod(.catmullRom)
+                        .lineStyle(StrokeStyle(lineWidth: 3))
+                        .foregroundStyle(skyBlue)
+                        .symbol(Circle())
+                        .symbolSize(70)
+                    }
                 }
-                .frame(height: 300)
-                .padding()
+                .frame(height: 320)
+                .padding(.horizontal)
+                .chartYAxis {
+                    AxisMarks(position: .leading)
+                }
+                .chartXAxis {
+                    AxisMarks(values: stats.map { $0.year })
+                }
 
                 Spacer()
             }
+            .background(Color(UIColor.systemGroupedBackground).ignoresSafeArea())
             .navigationTitle("Donation Stats")
         }
     }
