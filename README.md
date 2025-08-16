@@ -1,88 +1,89 @@
-LifeFlow – Smart Blood Donation App
+🩸 LifeFlow – Smart Blood Donation App
+<p align="center"> <img src="https://img.shields.io/badge/Platform-iOS-red?style=for-the-badge&logo=apple" /> <img src="https://img.shields.io/badge/SwiftUI-Enabled-orange?style=for-the-badge&logo=swift" /> <img src="https://img.shields.io/badge/Firebase-Backend-yellow?style=for-the-badge&logo=firebase" /> <img src="https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge" /> </p> <p align="center"> 🚑 <b>LifeFlow</b> is a next-gen Smart Blood Donation System that connects donors, hospitals, and patients seamlessly. It includes real-time matching, Uber-style donor pickup, donation history, and an engaging iOS SwiftUI experience. </p>
+✨ Features
 
-LifeFlow is a comprehensive iOS application designed to simplify blood donation and streamline communication between donors, hospitals, and blood banks. Built with SwiftUI and Firebase, it offers real-time notifications, location-based services, and role-based access for a seamless user experience.
+🔐 Role-Based Login – Separate dashboards for Users, Hospitals, and Admins
 
-Table of Contents
+🩸 Blood Requirements – View, filter, and manage urgent blood needs
 
-Features
+📍 Nearby Blood Banks – Real-time location with Google Places integration
 
-Screenshots
+🚕 Smart Donor Pickup – Uber-style cab booking for eligible donors
 
-Technologies
+📊 Donation Stats & History – Track your contributions with beautiful charts
 
-Architecture
+⚡ Push Notifications – Instant alerts for matching blood requirements
+
+🛡️ Secure Authentication – Powered by Firebase Auth & Firestore
+
+📱 App Workflow
+flowchart TD
+    A[Login / Signup] -->|Role: User| B[User Dashboard]
+    A -->|Role: Hospital| C[Hospital Dashboard]
+    A -->|Role: Admin| D[Admin Dashboard]
+
+    B --> E[See Requirements]
+    B --> F[Register as Donor]
+    B --> G[Donation Stats & History]
+
+    C --> H[Post Blood Requirement]
+    C --> I[Match Donors]
+
+    B --> J[Nearby Blood Banks]
+    H --> K[Smart Pickup Request]
+    K --> L[Cab Auto-Booking]
+
+🛠️ Tech Stack
+
+Frontend: SwiftUI (iOS 16+)
+
+Backend: Firebase (Auth, Firestore, Notifications)
+
+Maps & Location: MapKit + Google Places API
+
+Design: Apple Human Interface Guidelines + Custom UI Components
+
+🚀 Getting Started
+Prerequisites
+
+macOS with Xcode 15+
+
+Swift 5.9+
+
+Firebase Project Setup (Firestore + Authentication)
 
 Installation
+# Clone the repository
+git clone https://github.com/yourusername/lifeflow.git
 
-Usage
+# Open in Xcode
+cd lifeflow
+open LifeFlow.xcodeproj
 
-Contributing
+Setup
 
-MIT - License
+Add your GoogleService-Info.plist in the project root
 
-**Features**
-For Donors
+Enable Firebase Auth & Firestore
 
-Register and manage donor profile
+Run on iOS Simulator or real device
 
-Receive blood donation requests in real-time
+📸 Screenshots
+<p align="center"> <img src="https://via.placeholder.com/250x500.png?text=Dashboard" width="30%" /> <img src="https://via.placeholder.com/250x500.png?text=Blood+Requirements" width="30%" /> <img src="https://via.placeholder.com/250x500.png?text=Donation+History" width="30%" /> </p>
+🤝 Contributing
 
-View nearby hospitals and blood banks
+We welcome contributions!
 
-Track donation history and statistics
+Fork the repo
 
-For Hospitals
+Create a feature branch (feature/new-feature)
 
-Post urgent blood requirements
+Commit & Push
 
-Receive donor matches automatically
+Open a Pull Request 🎉
 
-Manage blood inventory and requests
+📜 License
 
-Smart Features
+This project is licensed under the MIT License.
 
-Role-based authentication (Admin / Donor / Hospital)
-
-Uber-style ride booking for donors when needed
-
-Real-time location tracking and notifications
-
-Filter blood requirements by blood group, urgency, or proximity
-
-**Screenshots**
-
-<img width="1170" height="2532" alt="IMG_7822" src="https://github.com/user-attachments/assets/1db480b1-c3cc-49fd-9842-6fb325f900cb" />
-![Life flow_final ](https://github.com/user-attachments/assets/e47cad2e-dbcb-49fd-a683-3534858d2d6e)
-![WhatsApp Image 2025-08-15 at 02 09 06](https://github.com/user-attachments/assets/ad0ce85c-6d00-44f8-8146-a1a8765d5d70)
-![WhatsApp Image 2025-08-16 at 15 29 25](https://github.com/user-attachments/assets/f81da0b6-ccaa-43e7-a2b6-7175f207da96)
-![WhatsApp Image 2025-08-16 at 15 29 24 (2)](https://github.com/user-attachments/assets/0ca4df41-6721-41c6-b155-60d1268f7c82)
-![WhatsApp Image 2025-08-16 at 15 29 24 (1)](https://github.com/user-attachments/assets/36662b15-2a4f-4d97-9f79-bffc3dc01076)
-![WhatsApp Image 2025-08-16 at 15 29 24](https://github.com/user-attachments/assets/22955933-a6dd-4714-a759-bd9ce998c59a)
-
-
-
-Dashboard view
-
-Blood requirements list
-
-Donor profile & donation history
-
-Nearby blood banks map
-
-Technologies
-
-iOS: Swift, SwiftUI
-
-Backend: Firebase Firestore, Firebase Auth, Cloud Functions
-
-Maps & Location: MapKit, CoreLocation
-
-Real-time Notifications: Firebase Cloud Messaging
-
-Architecture
-
-MVVM Pattern: Separates UI, business logic, and data models
-
-Role-based Access Control: Ensures different dashboards and features for donors, hospitals, and admins
-
-Realtime Database & Notifications: Firebase Firestore + FCM for instant updates
+<p align="center"> 💡 Built with ❤️ by <b>Anindya</b> </p>
