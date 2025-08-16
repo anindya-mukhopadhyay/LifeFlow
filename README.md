@@ -18,9 +18,9 @@ Usage
 
 Contributing
 
-License
+MIT - License
 
-Features
+**Features**
 For Donors
 
 Register and manage donor profile
@@ -49,7 +49,7 @@ Real-time location tracking and notifications
 
 Filter blood requirements by blood group, urgency, or proximity
 
-Screenshots
+**Screenshots**
 
 <img width="1170" height="2532" alt="IMG_7822" src="https://github.com/user-attachments/assets/1db480b1-c3cc-49fd-9842-6fb325f900cb" />
 ![Life flow_final ](https://github.com/user-attachments/assets/e47cad2e-dbcb-49fd-a683-3534858d2d6e)
