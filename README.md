@@ -69,10 +69,14 @@ Enable Firebase Auth & Firestore
 Run on iOS Simulator or real device
 
 📸 Screenshots
+<p ## 📸 Screenshots
+
 <p align="center">
-    
-  <img src="https://github.com/user-attachments/assets/5c595663-3b1e-49e5-8e08-edf0447589bd" alt="IMG_7822" width="30%">
-  <img src="https://github.com/user-attachments/assets/5c595663-3b1e-49e5-8e08-edf0447589bd" alt="IMG_7822" width="30%">
+  <img src="https://github.com/user-attachments/assets/5c595663-3b1e-49e5-8e08-edf0447589bd" alt="Dashboard" width="250" />
+  <img src="https://github.com/user-attachments/assets/e83c6a09-8869-43bd-99ae-0c87d1e3e255" alt="Blood Banks Near Me" width="250" />
+  <img src="https://github.com/user-attachments/assets/b45f7be0-f9ee-46c7-a204-70640a3300f0" alt="Settings" width="250" />
+</p>
+
 </p>
 
 🤝 Contributing
