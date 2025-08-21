@@ -1006,6 +1006,197 @@ struct ChatbotFAQView: View {
                 "Uncontrolled seizures prevent safe donation."
             ],
 
+                ["What is the Bombay blood group?"]: [
+                    "Bombay blood group is a very rare type (hh phenotype).",
+                    "It cannot receive from any regular ABO type, only from another Bombay blood group."
+                ],
+                ["Who can donate to Bombay blood group?"]: [
+                    "Only another Bombay blood group person can donate.",
+                    "Even O negative cannot be given to Bombay blood group."
+                ],
+                ["What happens if Rh factor is mismatched in transfusion?"]: [
+                    "It can cause serious immune reactions.",
+                    "Mismatched Rh can lead to destruction of red blood cells."
+                ],
+                ["What is Rh incompatibility in pregnancy?"]: [
+                    "When mother is Rh- and baby is Rh+, antibodies may attack baby’s blood.",
+                    "It is prevented by giving anti-D injection to the mother."
+                ],
+                ["Which blood group is most common in India?"]: [
+                    "B positive is the most common blood group in India.",
+                    "Globally, O+ is most common, but in India B+ dominates."
+                ],
+                ["Which blood group is the rarest in the world?"]: [
+                    "AB negative is one of the rarest.",
+                    "Bombay blood group is even rarer in some regions."
+                ],
+                ["Why is blood cross-matching important?"]: [
+                    "It checks donor and recipient compatibility.",
+                    "It prevents dangerous transfusion reactions."
+                ],
+                ["Can a diabetic donate blood?"]: [
+                    "Yes, if diabetes is under control and no complications exist.",
+                    "Insulin-dependent patients usually cannot donate."
+                ],
+                ["Can high blood pressure patients donate blood?"]: [
+                    "Yes, if BP is under control and within limits.",
+                    "Uncontrolled hypertension disqualifies donors."
+                ],
+                ["Can low hemoglobin donors give blood?"]: [
+                    "No, minimum hemoglobin should be 12.5 g/dL.",
+                    "Low Hb can make donation unsafe for donor."
+                ],
+                ["Can women donate during menstruation?"]: [
+                    "It is not recommended during periods.",
+                    "Better to wait until after menstruation to avoid weakness."
+                ],
+                ["Can a person with tattoos donate blood?"]: [
+                    "Yes, but usually after 6–12 months of getting tattoo.",
+                    "This ensures no hidden infection risk."
+                ],
+                ["What is the minimum weight required for donation?"]: [
+                    "A donor should weigh at least 50 kg.",
+                    "Underweight people are not allowed to donate."
+                ],
+                ["What is the minimum age to donate blood?"]: [
+                    "Minimum age is 18 years.",
+                    "Donors should be between 18–65 years."
+                ],
+                ["Can senior citizens donate blood?"]: [
+                    "Above 65 years, donation is usually not allowed.",
+                    "Some exceptions exist if doctor approves."
+                ],
+                ["Can recovered COVID-19 patients donate blood?"]: [
+                    "Yes, after 28 days of recovery.",
+                    "Plasma from recovered patients was used for COVID treatment."
+                ],
+                ["What is convalescent plasma therapy?"]: [
+                    "It uses plasma from recovered patients to treat sick patients.",
+                    "It was tried during COVID-19 pandemic."
+                ],
+                ["Why are platelets donated separately?"]: [
+                    "Platelets are needed for dengue, cancer, bleeding patients.",
+                    "Apheresis machine collects only platelets from donor."
+                ],
+                ["How long do platelets last after donation?"]: [
+                    "Platelets can be stored for 5–7 days only.",
+                    "That’s why regular donors are important."
+                ],
+                ["Why is AB plasma special?"]: [
+                    "AB plasma can be given to all blood groups.",
+                    "That makes AB plasma universal donor."
+                ],
+                ["Can O blood group receive AB plasma?"]: [
+                    "Yes, O can receive plasma from AB.",
+                    "AB is universal plasma donor."
+                ],
+                ["What is whole blood donation?"]: [
+                    "It means donating red cells, plasma, platelets together.",
+                    "Most common form of donation in camps."
+                ],
+                ["What is double red cell donation?"]: [
+                    "It collects only red cells using a machine.",
+                    "Donor’s plasma and platelets are returned."
+                ],
+                ["Can a breastfeeding mother donate blood?"]: [
+                    "No, breastfeeding mothers cannot donate.",
+                    "It may affect mother’s health and milk production."
+                ],
+                ["Can malaria survivors donate blood?"]: [
+                    "Yes, after 3 months of recovery and if fully healthy.",
+                    "If still infected, donation is not allowed."
+                ],
+                ["Can jaundice patients donate blood?"]: [
+                    "Not if jaundice was due to hepatitis.",
+                    "If it was non-infectious (like newborn jaundice), then maybe allowed."
+                ],
+                ["Can kidney patients donate blood?"]: [
+                    "No, people with kidney failure cannot donate.",
+                    "It may worsen their health."
+                ],
+                ["Can heart patients donate blood?"]: [
+                    "No, people with heart disease are not allowed.",
+                    "Donation may stress their cardiovascular system."
+                ],
+                ["Can organ transplant patients donate blood?"]: [
+                    "Usually no, because they take lifelong medicines.",
+                    "Immunosuppressive drugs disqualify them."
+                ],
+                ["Why is blood donation important?"]: [
+                    "It saves lives in surgeries, accidents, and illnesses.",
+                    "One donation can save up to 3 lives."
+                ],
+                ["How much blood is in the human body?"]: [
+                    "About 4.5 to 6 liters depending on weight.",
+                    "It is around 7–8% of body weight."
+                ],
+                ["How quickly does the body replace donated blood?"]: [
+                    "Plasma is replaced in 24 hours.",
+                    "Red cells are replaced in 4–6 weeks."
+                ],
+                ["Does donating blood weaken immunity?"]: [
+                    "No, blood donation does not reduce immunity.",
+                    "Body naturally replenishes blood components."
+                ],
+                ["Can vegetarians donate blood safely?"]: [
+                    "Yes, vegetarians can donate blood safely.",
+                    "As long as hemoglobin levels are normal."
+                ],
+                ["Can people on antibiotics donate blood?"]: [
+                    "No, people on antibiotics cannot donate.",
+                    "They must wait until infection is cured."
+                ],
+                ["Can epilepsy patients donate blood?"]: [
+                    "No, epilepsy patients are not allowed.",
+                    "Risk of seizure during or after donation."
+                ],
+                ["Can asthma patients donate blood?"]: [
+                    "Yes, if asthma is mild and under control.",
+                    "If severe or on heavy medication, not allowed."
+                ],
+                ["Can blood be donated during fasting?"]: [
+                    "Not recommended, donor may feel weak.",
+                    "Better to eat something light before donation."
+                ],
+                ["Can one person donate to himself?"]: [
+                    "Yes, called autologous donation before surgery.",
+                    "Blood is stored and given back to the same patient."
+                ],
+                ["Can animals donate blood?"]: [
+                    "Yes, in veterinary medicine dogs and cats donate to same species.",
+                    "Each animal species has its own blood groups."
+                ],
+                ["What is leukoreduced blood?"]: [
+                    "Blood with white cells removed.",
+                    "It reduces risk of fever and reactions in patients."
+                ],
+                ["Why is fresh frozen plasma used?"]: [
+                    "To treat clotting disorders and bleeding.",
+                    "It contains clotting factors and proteins."
+                ],
+                ["Why is cryoprecipitate important?"]: [
+                    "It is rich in clotting factors for hemophilia patients.",
+                    "It helps stop uncontrolled bleeding."
+                ],
+                ["Can artificial blood replace real blood?"]: [
+                    "Research is ongoing, but no full replacement exists yet.",
+                    "Artificial substitutes are used only in rare cases."
+                ],
+                ["Can one donation save multiple patients?"]: [
+                    "Yes, because blood is separated into red cells, plasma, and platelets.",
+                    "One donor can help up to 3–4 patients."
+                ],
+                ["Can identical twins donate to each other safely?"]: [
+                    "Yes, identical twins are usually perfect matches.",
+                    "But cross-matching is still done for safety."
+                ],
+                ["Can blood be stored at home?"]: [
+                    "No, blood must be stored in blood banks under strict conditions.",
+                    "Home storage would spoil blood quickly."
+                ],
+            
+
+
             // Fun facts & awareness
             ["fastest recovery", "recover quickly"]: [
                 "Hydration and iron-rich foods speed recovery.",
