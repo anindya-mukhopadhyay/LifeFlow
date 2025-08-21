@@ -9,10 +9,10 @@ struct ChatbotFAQView: View {
     @State private var inputText: String = ""
     
     @State private var isListening = false
-    @State private var speechRecognizer = SFSpeechRecognizer()
+    private let speechRecognizer = SFSpeechRecognizer(locale: Locale(identifier: "en-US"))!
     @State private var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
     @State private var recognitionTask: SFSpeechRecognitionTask?
-    @State private var audioEngine = AVAudioEngine()
+    private let audioEngine = AVAudioEngine()
     
     private let synthesizer = AVSpeechSynthesizer()
     
@@ -27,7 +27,7 @@ struct ChatbotFAQView: View {
                         }
                     }
                     .padding()
-                    .onChange(of: messages.count) { _ in
+                    .onChange(of: messages.count) { _, _ in
                         if let last = messages.last {
                             withAnimation {
                                 scrollViewProxy.scrollTo(last.id, anchor: .bottom)
@@ -41,11 +41,7 @@ struct ChatbotFAQView: View {
             
             HStack(spacing: 12) {
                 Button(action: {
-                    if isListening {
-                        stopListening()
-                    } else {
-                        startListening()
-                    }
+                    isListening ? stopListening() : startListening()
                 }) {
                     Image(systemName: isListening ? "mic.fill" : "mic")
                         .foregroundColor(isListening ? .red : .blue)
@@ -88,7 +84,6 @@ struct ChatbotFAQView: View {
         let userMessage = Message(text: trimmed, isUser: true, date: Date())
         messages.append(userMessage)
         
-        // Simulate bot response with delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
             let replyText = getBotReply(for: trimmed)
             let botMessage = Message(text: replyText, isUser: false, date: Date())
@@ -107,37 +102,30 @@ struct ChatbotFAQView: View {
                 "You must be at least 18 years old, weigh over 50kg, and be healthy to donate blood.",
                 "Blood donors need to be 18+, weigh at least 50kg, and be in good health."
             ],
-            
             ["interval", "gap", "how often", "frequency"]: [
                 "The minimum gap between two blood donations is 3 months.",
                 "You should wait at least 3 months between donations for your safety."
             ],
-            
             ["thalassemia", "thalassemic", "genetic blood disorder"]: [
                 "Thalassemia is a genetic blood disorder. People with severe thalassemia cannot donate blood.",
                 "Individuals with severe thalassemia are not eligible to donate blood."
             ],
-            
             ["thank", "thanks", "thank you"]: [
                 "You’re welcome! If you have more questions, just ask.",
                 "Glad I could help! Feel free to ask anything else."
             ],
-            
             ["blood groups", "blood type", "types of blood"]: [
                 "There are 8 main blood types: A+, A-, B+, B-, AB+, AB-, O+, and O-.",
                 "Blood types include A, B, AB, and O, each with positive or negative Rh factor."
             ],
-            
             ["donation process", "how to donate", "donation steps"]: [
                 "You fill a health questionnaire, undergo a quick medical check, then donate blood in about 10 minutes.",
                 "The process involves registration, health check, blood donation, and refreshments."
             ],
-            
             ["side effects", "after donation", "post donation"]: [
                 "Most donors feel fine after donation, but some might experience mild dizziness or fatigue.",
                 "Common side effects can include slight weakness or bruising, but they usually go away quickly."
             ],
-            
             ["emergency", "urgent", "immediate need"]: [
                 "If there’s an urgent need for blood, hospitals will notify eligible donors directly.",
                 "Emergency blood requests are prioritized and communicated swiftly."
@@ -145,20 +133,17 @@ struct ChatbotFAQView: View {
         ]
         
         for (keywords, answers) in faqData {
-            for keyword in keywords {
-                if lowerQ.contains(keyword) {
-                    return answers.randomElement() ?? "Sorry, I don't have an answer right now."
-                }
+            for keyword in keywords where lowerQ.contains(keyword) {
+                return answers.randomElement() ?? "Sorry, I don't have an answer right now."
             }
         }
         
-        let fallbackReplies = [
+        return [
             "I’m not sure about that, but I’ll find out for you!",
             "Could you please rephrase your question?",
             "Let me check on that and get back to you!",
             "Sorry, I don't have information on that topic yet."
-        ]
-        return fallbackReplies.randomElement()!
+        ].randomElement()!
     }
     
     func speak(text: String) {
@@ -169,13 +154,9 @@ struct ChatbotFAQView: View {
         synthesizer.speak(utterance)
     }
     
-    // MARK: - Speech Recognition
-    
     func requestSpeechAuth() {
         SFSpeechRecognizer.requestAuthorization { authStatus in
-            switch authStatus {
-            case .authorized: break
-            default:
+            if authStatus != .authorized {
                 print("Speech recognition authorization denied")
             }
         }
@@ -187,13 +168,12 @@ struct ChatbotFAQView: View {
             return
         }
         
+        recognitionRequest?.endAudio()
         recognitionRequest = SFSpeechAudioBufferRecognitionRequest()
-        
-        let node = audioEngine.inputNode
         guard let recognitionRequest = recognitionRequest else { return }
         recognitionRequest.shouldReportPartialResults = true
         
-        recognitionTask = speechRecognizer?.recognitionTask(with: recognitionRequest) { result, error in
+        recognitionTask = speechRecognizer.recognitionTask(with: recognitionRequest) { result, error in
             if let result = result {
                 inputText = result.bestTranscription.formattedString
             }
@@ -203,6 +183,8 @@ struct ChatbotFAQView: View {
             }
         }
         
+        let node = audioEngine.inputNode
+        node.removeTap(onBus: 0)
         let recordingFormat = node.outputFormat(forBus: 0)
         node.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { buffer, _ in
             recognitionRequest.append(buffer)
@@ -222,6 +204,8 @@ struct ChatbotFAQView: View {
         audioEngine.inputNode.removeTap(onBus: 0)
         recognitionRequest?.endAudio()
         recognitionTask?.cancel()
+        recognitionRequest = nil
+        recognitionTask = nil
         isListening = false
     }
 }

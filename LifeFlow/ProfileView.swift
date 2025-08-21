@@ -3,7 +3,7 @@ import Foundation
 import UIKit
 
 struct ProfileView: View {
-    // Persistent storage
+    // MARK: - Persistent storage
     @AppStorage("userName") private var name: String = "Anindya Mukhopadhyay"
     @AppStorage("userEmail") private var email: String = "you@example.com"
     @AppStorage("userPhone") private var phone: String = ""
@@ -15,11 +15,11 @@ struct ProfileView: View {
     @AppStorage("userDOB") private var dob: Date = Date()
     @AppStorage("profileImageData") private var profileImageData: Data?
 
-    // View states
+    // MARK: - View states
     @State private var showingImagePicker = false
     @State private var editingProfile = false
     
-    // Options
+    // MARK: - Options
     private let bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
     private let relations = ["Mother", "Father", "Brother", "Sister", "Grandfather", "Grandmother", "GF", "BF", "Husband", "Wife"]
 
@@ -27,7 +27,7 @@ struct ProfileView: View {
         ScrollView {
             VStack(spacing: 24) {
                 
-                // Profile Image with edit button
+                // MARK: Profile Image
                 ZStack(alignment: .bottomTrailing) {
                     if let data = profileImageData,
                        let uiImage = UIImage(data: data) {
@@ -55,52 +55,18 @@ struct ProfileView: View {
                 .padding(.top, 16)
                 
                 if editingProfile {
-                    // Editable fields
+                    // MARK: Editable fields
                     Group {
-                        TextField("Name", text: $name)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .onChange(of: name) { newValue in
-                                if newValue.count > 30 {
-                                    name = String(newValue.prefix(30))
-                                }
-                            }
-                        
-                        TextField("Email", text: $email)
-                            .keyboardType(.emailAddress)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .onChange(of: email) { newValue in
-                                if newValue.count > 50 {
-                                    email = String(newValue.prefix(50))
-                                }
-                            }
+                        validatedTextField("Name", text: $name, maxLength: 30)
+                        validatedTextField("Email", text: $email, maxLength: 50, keyboard: .emailAddress)
                         
                         HStack {
-                            Text("+91")
-                                .padding(.horizontal, 6)
-                                .background(Color.gray.opacity(0.2))
-                                .cornerRadius(5)
-                            TextField("Phone Number", text: $phone)
-                                .keyboardType(.numberPad)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .onChange(of: phone) { newValue in
-                                    phone = String(newValue.prefix(10).filter { $0.isNumber })
-                                }
+                            prefixBox("+91")
+                            validatedTextField("Phone Number", text: $phone, maxLength: 10, numbersOnly: true, keyboard: .numberPad)
                         }
                         
-                        TextField("Address", text: $address)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .onChange(of: address) { newValue in
-                                if newValue.count > 50 {
-                                    address = String(newValue.prefix(50))
-                                }
-                            }
-                        
-                        TextField("Pincode", text: $pincode)
-                            .keyboardType(.numberPad)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .onChange(of: pincode) { newValue in
-                                pincode = String(newValue.prefix(6).filter { $0.isNumber })
-                            }
+                        validatedTextField("Address", text: $address, maxLength: 50)
+                        validatedTextField("Pincode", text: $pincode, maxLength: 6, numbersOnly: true, keyboard: .numberPad)
                         
                         // Emergency contact in one box
                         VStack(alignment: .leading, spacing: 6) {
@@ -108,16 +74,8 @@ struct ProfileView: View {
                                 .font(.headline)
                             
                             HStack {
-                                Text("+91")
-                                    .padding(.horizontal, 6)
-                                    .background(Color.gray.opacity(0.2))
-                                    .cornerRadius(5)
-                                TextField("Number", text: $emergencyNumber)
-                                    .keyboardType(.numberPad)
-                                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                                    .onChange(of: emergencyNumber) { newValue in
-                                        emergencyNumber = String(newValue.prefix(10).filter { $0.isNumber })
-                                    }
+                                prefixBox("+91")
+                                validatedTextField("Number", text: $emergencyNumber, maxLength: 10, numbersOnly: true, keyboard: .numberPad)
                             }
                             
                             Picker("Relation", selection: $emergencyRelation) {
@@ -144,7 +102,7 @@ struct ProfileView: View {
                     Button("Save") { editingProfile = false }
                         .padding(.top, 8)
                 } else {
-                    // View Mode
+                    // MARK: View Mode
                     VStack(spacing: 4) {
                         Text(name)
                             .font(.title)
@@ -155,7 +113,6 @@ struct ProfileView: View {
                     
                     Divider()
                     
-                    // Personal Details Section
                     VStack(alignment: .leading, spacing: 8) {
                         recordRow(label: "Email", icon: "envelope.fill", value: email)
                         recordRow(label: "Phone", icon: "phone.fill", value: "+91 \(phone)")
@@ -183,12 +140,39 @@ struct ProfileView: View {
         }
     }
     
-    // Helper to calculate age from DOB
+    // MARK: - Helpers
+    
     private func calculateAge(from date: Date) -> Int {
         let calendar = Calendar.current
         let now = Date()
         let ageComponents = calendar.dateComponents([.year], from: date, to: now)
         return ageComponents.year ?? 0
+    }
+    
+    private func validatedTextField(
+        _ title: String,
+        text: Binding<String>,
+        maxLength: Int,
+        numbersOnly: Bool = false,
+        keyboard: UIKeyboardType = .default
+    ) -> some View {
+        TextField(title, text: text)
+            .keyboardType(keyboard)
+            .textFieldStyle(RoundedBorderTextFieldStyle())
+            .onChange(of: text.wrappedValue) { oldValue, newValue in
+                var filtered = numbersOnly ? newValue.filter { $0.isNumber } : newValue
+                if filtered.count > maxLength {
+                    filtered = String(filtered.prefix(maxLength))
+                }
+                text.wrappedValue = filtered
+            }
+    }
+    
+    private func prefixBox(_ text: String) -> some View {
+        Text(text)
+            .padding(.horizontal, 6)
+            .background(Color.gray.opacity(0.2))
+            .cornerRadius(5)
     }
     
     @ViewBuilder

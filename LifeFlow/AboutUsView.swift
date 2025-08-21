@@ -15,7 +15,7 @@ struct AboutUsView: View {
                     .padding(.bottom, 10)
 
                 Text("""
-Welcome to **LifeFlow** – your trusted Smart Blood Donation System made by **Anindya Mukhopadhyay** and **Aritra Lala** and our UXUI Designer **Sneha Karmakar**.
+Welcome to **LifeFlow** – your trusted Smart Blood Donation System made by **Anindya Mukhopadhyay** 
 
 Our mission is to connect life-saving donors with those in urgent need. Whether you're a hospital looking for a match, or a donor willing to help, LifeDrop simplifies the process.
 
