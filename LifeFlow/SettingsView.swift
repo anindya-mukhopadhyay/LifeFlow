@@ -4,13 +4,14 @@ import UIKit
 struct SettingsView: View {
     @EnvironmentObject var authViewModel: AuthViewModel
     
-    // Fetch from persistent storage
+    // Profile storage
     @AppStorage("userName") private var name: String = "Your Name"
     @AppStorage("userEmail") private var email: String = "you@example.com"
     @AppStorage("profileImageData") private var profileImageData: Data? // Profile image
-
+    
+    // Preferences storage
     @State private var notificationsEnabled = true
-    @State private var selectedTheme = "System"
+    @AppStorage("selectedTheme") private var selectedTheme = "System"
     @State private var selectedLanguage = "English"
 
     var languages = ["English", "Hindi", "Bengali", "Spanish"]
@@ -39,9 +40,9 @@ struct SettingsView: View {
                             }
                             
                             VStack(alignment: .leading) {
-                                Text(name) // Dynamic name
+                                Text(name)
                                     .font(.headline)
-                                Text(email) // Dynamic email
+                                Text(email)
                                     .font(.subheadline)
                                     .foregroundColor(.gray)
                             }
@@ -93,6 +94,16 @@ struct SettingsView: View {
                 }
             }
             .navigationTitle("Settings")
+        }
+        // 🔥 Apply Theme
+        .preferredColorScheme(resolveTheme())
+    }
+    
+    private func resolveTheme() -> ColorScheme? {
+        switch selectedTheme {
+        case "Light": return .light
+        case "Dark": return .dark
+        default: return nil // System
         }
     }
 }
