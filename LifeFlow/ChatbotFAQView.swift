@@ -335,8 +335,523 @@ struct ChatbotFAQView: View {
             ["benefits", "advantages", "good for health"]: [
                 "Donation stimulates new blood cell production.",
                 "Some studies suggest regular donation may improve heart health."
+            ],// --- NEW 90 ADDITIONS ---
+            
+            // Blood donation basics
+            ["who can donate", "eligible donor", "donor criteria"]: [
+                "Anyone healthy, aged 18–60, and above 50 kg is usually eligible.",
+                "Eligibility depends on medical history, weight, age, and hemoglobin."
             ],
 
+            ["who cannot donate", "disqualified donor", "not eligible"]: [
+                "People with HIV, hepatitis, or severe illness cannot donate.",
+                "Pregnant women, underweight persons, and drug users are disqualified."
+            ],
+
+            ["donate without ID", "id proof required"]: [
+                "Yes, ID is required for record and safety purposes.",
+                "Carry Aadhaar, voter card, or any government-approved ID."
+            ],
+
+            // Cultural & social
+            ["religion donate", "is blood donation against religion"]: [
+                "No major religion prohibits blood donation.",
+                "Many religious leaders encourage donation as an act of charity."
+            ],
+
+            ["blood donation in india", "rules india"]: [
+                "India follows NACO & WHO guidelines for donation.",
+                "Minimum gap is 90 days (men) and 120 days (women)."
+            ],
+
+            ["world blood donor day", "blood donor day"]: [
+                "It is celebrated on 14 June every year.",
+                "World Blood Donor Day honors voluntary donors worldwide."
+            ],
+
+            // Special situations
+            ["donate during covid", "covid donor", "after covid"]: [
+                "Wait 28 days after recovery from COVID-19 before donating.",
+                "COVID-19 patients must be fully recovered and symptom-free."
+            ],
+
+            ["covid vaccine donation", "after vaccine", "donate after vaccination"]: [
+                "You can donate blood 14 days after COVID vaccination.",
+                "Some vaccines may need a short waiting period."
+            ],
+
+            ["fever", "cold", "flu"]: [
+                "You cannot donate during fever or flu.",
+                "Wait at least 7 days after recovery."
+            ],
+
+            ["typhoid", "malaria", "jaundice"]: [
+                "After malaria, wait 3 months post-recovery.",
+                "After jaundice/hepatitis, permanent deferral in most cases."
+            ],
+
+            // Female donors
+            ["periods", "menstruation", "donate during periods"]: [
+                "Not recommended during heavy flow or weakness.",
+                "Better to wait until the menstrual cycle ends."
+            ],
+
+            ["menopause", "older women donate"]: [
+                "Women up to age 60 can donate if healthy.",
+                "Post-menopause is not a restriction if medically fit."
+            ],
+
+            // Technical
+            ["universal donor", "o negative donor"]: [
+                "O negative is called the universal donor for red cells.",
+                "O negative donors are very important in emergencies."
+            ],
+
+            ["universal recipient", "ab positive"]: [
+                "AB positive is universal recipient for red cells.",
+                "They can receive blood from any group."
+            ],
+
+            ["cross matching", "blood compatibility test"]: [
+                "Cross matching ensures donor and recipient blood are safe together.",
+                "It prevents transfusion reactions."
+            ],
+
+            ["hemoglobin requirement", "hb level"]: [
+                "Minimum Hb is 12.5 g/dL for women and 13 g/dL for men.",
+                "Low Hb disqualifies a donor temporarily."
+            ],
+
+            // Donation types
+            ["apheresis", "what is apheresis", "apheresis donation"]: [
+                "Apheresis separates platelets/plasma and returns rest of blood.",
+                "It helps patients needing specific components."
+            ],
+
+            ["cord blood", "umbilical cord blood"]: [
+                "Cord blood is rich in stem cells and stored in banks.",
+                "It is used for treating blood cancers and disorders."
+            ],
+
+            ["stem cell donation", "bone marrow donation"]: [
+                "Stem cells are collected from blood or marrow for transplants.",
+                "This is different from regular blood donation."
+            ],
+
+            // After donation
+            ["donate and play sports", "sports after donation"]: [
+                "Avoid intense sports for 24 hours.",
+                "Light activities like walking are fine."
+            ],
+
+            ["donate and swimming", "swim after donation"]: [
+                "Swimming immediately is not advised.",
+                "Wait a few hours to avoid dizziness."
+            ],
+
+            ["donate and driving", "can i drive"]: [
+                "You may drive after donation if you feel fine.",
+                "Wait 10–15 mins and have a snack before driving."
+            ],
+
+            // Myths & misconceptions
+            ["donation causes weakness", "feel weak"]: [
+                "Temporary tiredness is possible, but rest and fluids help.",
+                "The body recovers quickly after donation."
+            ],
+
+            ["donation causes infertility", "affect fertility"]: [
+                "No, donating blood has no effect on fertility.",
+                "This is a myth without scientific basis."
+            ],
+
+            ["donation shortens life", "lose years"]: [
+                "No, donation does not reduce lifespan.",
+                "It is safe and often linked to health benefits."
+            ],
+
+            ["donation makes thin", "weight loss"]: [
+                "Donation does not affect body fat.",
+                "Weight remains the same after donation."
+            ],
+
+            // Safety & procedure
+            ["is it safe", "safe to donate"]: [
+                "Yes, blood donation is completely safe.",
+                "All needles and equipment are new and sterile."
+            ],
+
+            ["risk of infection", "get disease from donating"]: [
+                "No, there is zero risk of infection for donors.",
+                "Strict hygiene standards are followed."
+            ],
+
+            ["needle size", "big needle"]: [
+                "A small sterile needle is used, just a mild prick.",
+                "The pain is minimal and lasts seconds."
+            ],
+
+            ["how much blood taken", "ml taken"]: [
+                "About 350–450 ml is collected per donation.",
+                "This is less than 10% of your total blood volume."
+            ],
+
+            // Blood demand
+            ["who needs blood", "patients needing blood"]: [
+                "Patients of accidents, surgeries, and anemia need blood.",
+                "Cancer, thalassemia, and trauma patients often require it."
+            ],
+
+            ["blood shortage", "need donors"]: [
+                "Hospitals often face shortage of rare groups.",
+                "Voluntary donors help prevent shortages."
+            ],
+
+            ["blood camp", "where to donate"]: [
+                "Blood donation camps are held by NGOs and hospitals.",
+                "Check online or nearby hospitals for donation drives."
+            ],
+
+            // Student/young donors
+            ["college donation", "student donor"]: [
+                "Students above 18 can donate safely.",
+                "Youth are encouraged to donate as voluntary donors."
+            ],
+
+            ["first year college", "donate as fresher"]: [
+                "If 18 years old and above 50 kg, yes.",
+                "Many colleges host first-time donor camps."
+            ],
+
+            // Advanced science
+            ["artificial blood", "synthetic blood"]: [
+                "Research is ongoing, but no complete substitute exists.",
+                "Artificial blood is not yet widely available."
+            ],
+
+            ["blood transfusion reaction", "reaction risk"]: [
+                "Reactions are rare but possible if mismatch occurs.",
+                "Cross-matching minimizes risk."
+            ],
+
+            ["frozen blood", "cryopreservation"]: [
+                "Some blood can be frozen for years.",
+                "Rare groups are stored in frozen form."
+            ],
+
+            // Regional / cultural
+            ["donate in summer", "hot weather donation"]: [
+                "Yes, but drink extra water to avoid dehydration.",
+                "Donation in summer is safe with hydration."
+            ],
+
+            ["donate in winter", "cold weather donation"]: [
+                "Winter is also safe, no restriction.",
+                "Keep yourself warm before and after donation."
+            ],
+
+            ["festival donation", "special camps"]: [
+                "Many camps are organized during festivals.",
+                "Donating in festive drives increases participation."
+            ],
+
+            // Medical
+            ["blood cancer", "donate if cancer"]: [
+                "People with active cancer cannot donate.",
+                "Cancer survivors may donate if fully cured and cleared."
+            ],
+
+            ["heart patient", "heart disease donate"]: [
+                "Heart patients are not allowed to donate.",
+                "Donation may stress the cardiovascular system."
+            ],
+
+            ["thyroid patient", "thyroid problem"]: [
+                "Controlled thyroid patients may donate.",
+                "Check with your doctor if on heavy medication."
+            ],
+                // 1
+                ["How many types of blood groups are there?"]: [
+                    "There are 8 main blood groups: A+, A-, B+, B-, AB+, AB-, O+, and O-.",
+                    "Blood groups are based on antigens A, B, AB, or O and Rh factor (positive or negative)."
+                ],
+                // 2
+                ["Which blood group is the rarest?"]: [
+                    "AB negative is the rarest blood group in the world.",
+                    "Only about 1% of people have AB- blood."
+                ],
+                // 3
+                ["Which blood group is the most common?"]: [
+                    "O positive is the most common blood group.",
+                    "About 37% of the population worldwide has O+."
+                ],
+                // 4
+                ["Who can donate blood?"]: [
+                    "Any healthy person aged 18–65 years, weighing at least 50kg, can donate blood.",
+                    "Donors must be free from infections and in good health."
+                ],
+                // 5
+                ["Who cannot donate blood?"]: [
+                    "People with infections, chronic diseases, or low body weight cannot donate.",
+                    "Pregnant women and HIV positive individuals cannot donate blood."
+                ],
+                // 6
+                ["How much blood is taken in one donation?"]: [
+                    "About 350–450ml of blood is collected in one donation.",
+                    "This amount is safe and your body replenishes it quickly."
+                ],
+                // 7
+                ["How often can a person donate blood?"]: [
+                    "Men can donate every 3 months, women every 4 months.",
+                    "A minimum gap of 12 weeks is recommended between donations."
+                ],
+                // 8
+                ["Is blood donation painful?"]: [
+                    "Only a small pinprick is felt when the needle is inserted.",
+                    "Most donors say the process is almost painless."
+                ],
+                // 9
+                ["Can I donate blood during my periods?"]: [
+                    "It’s not recommended to donate during menstruation due to weakness.",
+                    "Wait until your cycle ends before donating."
+                ],
+                // 10
+                ["Can a diabetic person donate blood?"]: [
+                    "Yes, if their sugar is controlled and they aren’t insulin-dependent.",
+                    "Diabetics on oral medication can usually donate."
+                ],
+                // 11
+                ["Can I donate if I have high blood pressure?"]: [
+                    "Yes, if your blood pressure is under control with medication.",
+                    "Controlled hypertension is not a barrier to donating."
+                ],
+                // 12
+                ["Can smokers donate blood?"]: [
+                    "Yes, but avoid smoking at least 2 hours before and after donation.",
+                    "Smoking does not disqualify you, but breaks are necessary."
+                ],
+                // 13
+                ["Can alcohol drinkers donate blood?"]: [
+                    "No, you should avoid alcohol for at least 24 hours before donation.",
+                    "Alcohol in your blood can make you ineligible temporarily."
+                ],
+                // 14
+                ["What should I eat before donating blood?"]: [
+                    "Eat a light meal and drink water before donation.",
+                    "Avoid oily or fatty foods before donating blood."
+                ],
+                // 15
+                ["What should I do after donating blood?"]: [
+                    "Rest for 10–15 minutes and drink fluids.",
+                    "Avoid heavy exercise for the next 24 hours."
+                ],
+                // 16
+                ["How long does it take to donate blood?"]: [
+                    "The actual donation takes 8–10 minutes.",
+                    "Including rest, the full process takes about 30–45 minutes."
+                ],
+                // 17
+                ["Is blood donation safe?"]: [
+                    "Yes, it’s completely safe with sterile disposable needles.",
+                    "There is no risk of infection from donating blood."
+                ],
+                // 18
+                ["How often can plasma be donated?"]: [
+                    "Plasma can be donated every 2 weeks.",
+                    "Unlike whole blood, plasma regenerates faster."
+                ],
+                // 19
+                ["What is the shelf life of donated blood?"]: [
+                    "Red blood cells last up to 42 days in storage.",
+                    "Plasma can be frozen and stored for up to one year."
+                ],
+                // 20
+                ["Who can receive O negative blood?"]: [
+                    "O negative is the universal donor for emergencies.",
+                    "Anyone can receive O- blood when type is unknown."
+                ],
+                // 21
+                ["Who can receive AB positive blood?"]: [
+                    "AB+ is the universal recipient blood group.",
+                    "People with AB+ can receive blood from all groups."
+                ],
+                // 22
+                ["Can pregnant women donate blood?"]: [
+                    "No, pregnant women are not allowed to donate.",
+                    "Pregnancy disqualifies you from blood donation."
+                ],
+                // 23
+                ["Can I donate if I have a tattoo?"]: [
+                    "Yes, but only after 6–12 months of getting a tattoo.",
+                    "Fresh tattoos increase infection risk, so waiting is necessary."
+                ],
+                // 24
+                ["Can cancer survivors donate blood?"]: [
+                    "Cancer patients and survivors are usually not allowed.",
+                    "Active or past cancer disqualifies blood donation."
+                ],
+                // 25
+                ["What are the benefits of blood donation?"]: [
+                    "It saves lives and helps maintain your heart health.",
+                    "Donating reduces excess iron and gives a free health check."
+                ],
+                // 26
+                ["Can I donate blood if I am underweight?"]: [
+                    "No, you must weigh at least 50kg to donate.",
+                    "Low weight can cause health risks while donating."
+                ],
+                // 27
+                ["What diseases prevent blood donation?"]: [
+                    "HIV, hepatitis, cancer, and heart disease prevent donation.",
+                    "Chronic illnesses make you ineligible to donate."
+                ],
+                // 28
+                ["How soon after COVID-19 can I donate blood?"]: [
+                    "You can donate 14 days after recovery from COVID-19.",
+                    "Wait at least 2 weeks post-symptoms before donating."
+                ],
+                // 29
+                ["Can I donate if I had malaria?"]: [
+                    "You must wait 3 months after recovering from malaria.",
+                    "Malaria history temporarily disqualifies donation."
+                ],
+                // 30
+                ["How much time does the body take to recover after donation?"]: [
+                    "Plasma and fluids recover in 24–48 hours.",
+                    "Red cells may take a few weeks to fully recover."
+                ],
+                // 31
+                ["What is platelet donation?"]: [
+                    "Platelet donation helps cancer and dengue patients.",
+                    "It takes about 1.5–2 hours and can be done every 2 weeks."
+                ],
+                // 32
+                ["What is plasma donation?"]: [
+                    "Plasma donation helps burn and clotting disorder patients.",
+                    "Plasma can be donated every 2 weeks safely."
+                ],
+                // 33
+                ["Can I donate if I have anemia?"]: [
+                    "No, anemic people are not allowed to donate blood.",
+                    "Low hemoglobin disqualifies blood donation."
+                ],
+                // 34
+                ["Can I donate blood if I am on antibiotics?"]: [
+                    "No, wait until the infection is gone and antibiotics are completed.",
+                    "You can donate only when you are fully recovered."
+                ],
+                // 35
+                ["How old do you have to be to donate blood?"]: [
+                    "You must be at least 18 years old to donate.",
+                    "Blood donation is allowed from 18 to 65 years."
+                ],
+                // 36
+                ["Can vegetarians donate blood?"]: [
+                    "Yes, vegetarians can donate blood if healthy.",
+                    "Diet type doesn’t affect eligibility as long as hemoglobin is normal."
+                ],
+                // 37
+                ["Can blood be sold?"]: [
+                    "No, selling or buying blood is illegal.",
+                    "Blood donation is always voluntary and unpaid."
+                ],
+                // 38
+                ["Why is blood donation important?"]: [
+                    "It saves lives in emergencies, surgeries, and illnesses.",
+                    "Blood cannot be manufactured, so donations are essential."
+                ],
+                // 39
+                ["What documents are required to donate blood?"]: [
+                    "You need an ID proof like Aadhaar or driving license.",
+                    "Basic identification is needed before donation."
+                ],
+                // 40
+                ["How long should I rest after donating blood?"]: [
+                    "Rest at least 10–15 minutes after donation.",
+                    "Avoid strenuous work for the next 24 hours."
+                ],
+                // 41
+                ["Can blood donation help the donor?"]: [
+                    "Yes, it reduces iron overload and improves heart health.",
+                    "It may lower cancer risk and keeps you healthy."
+                ],
+                // 42
+                ["Can someone donate blood after surgery?"]: [
+                    "Yes, but only after 6–12 months of recovery depending on surgery type.",
+                    "Consult a doctor before donating post-surgery."
+                ],
+                // 43
+                ["Can a person with asthma donate blood?"]: [
+                    "Yes, if asthma is mild and under control.",
+                    "Severe or uncontrolled asthma may prevent donation."
+                ],
+                // 44
+                ["How many calories are burned by donating blood?"]: [
+                    "Donating blood burns about 600 calories.",
+                    "It’s like a mild workout for your body."
+                ],
+                // 45
+                ["Can a breastfeeding mother donate blood?"]: [
+                    "No, breastfeeding mothers are not allowed to donate.",
+                    "Wait until you have stopped breastfeeding before donating."
+                ],
+                // 46
+                ["What is universal donor blood group?"]: [
+                    "O negative is the universal donor blood type.",
+                    "It can be given to anyone in emergencies."
+                ],
+                // 47
+                ["What is universal recipient blood group?"]: [
+                    "AB positive is the universal recipient group.",
+                    "AB+ people can receive blood from all groups."
+                ],
+                // 48
+                ["Can I donate if I have jaundice history?"]: [
+                    "No, people with hepatitis-related jaundice cannot donate.",
+                    "Past jaundice due to hepatitis disqualifies you."
+                ],
+                // 49
+                ["Can I donate if I am on medication?"]: [
+                    "Some medicines are fine, but check with the doctor first.",
+                    "Certain drugs may delay or prevent blood donation."
+                ],
+                // 50
+                ["How is donated blood tested?"]: [
+                    "Every unit is tested for HIV, Hepatitis B, Hepatitis C, Malaria, and Syphilis.",
+                    "Blood is carefully screened to ensure safety before transfusion."
+                ],
+
+            ["epilepsy", "fits", "seizures"]: [
+                "Epilepsy patients are usually deferred.",
+                "Uncontrolled seizures prevent safe donation."
+            ],
+
+            // Fun facts & awareness
+            ["fastest recovery", "recover quickly"]: [
+                "Hydration and iron-rich foods speed recovery.",
+                "Most donors feel normal within a day."
+            ],
+
+            ["blood bank meaning", "what is blood bank"]: [
+                "A blood bank stores and supplies blood for patients.",
+                "It also separates blood into components."
+            ],
+
+            ["iron after donation", "iron loss"]: [
+                "Each donation removes about 200–250 mg of iron.",
+                "Eat iron-rich food like spinach and meat afterwards."
+            ],
+
+            ["oldest donor", "world record donor age"]: [
+                "Many countries report donors above 90 years old.",
+                "Guinness records mention people with 100+ donations."
+            ],
+
+            ["largest blood camp", "world record blood donation"]: [
+                "India has hosted camps with thousands of donors.",
+                "World records include camps with 30,000+ units collected."
+            ],
+            
             ["interval", "gap", "how often", "frequency"]: [
                 "The minimum gap between two blood donations is 3 months.",
                 "You should wait at least 3 months between donations for your safety."
