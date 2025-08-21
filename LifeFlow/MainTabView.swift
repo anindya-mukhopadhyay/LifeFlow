@@ -9,7 +9,7 @@ struct MainTabView: View {
                     Text("Home")
                 }
 
-            Text("Search")
+            BloodBankNearMeView()
                 .tabItem {
                     Image(systemName: "magnifyingglass")
                     Text("Search")
