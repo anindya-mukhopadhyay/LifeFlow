@@ -820,7 +820,187 @@ struct ChatbotFAQView: View {
                     "Every unit is tested for HIV, Hepatitis B, Hepatitis C, Malaria, and Syphilis.",
                     "Blood is carefully screened to ensure safety before transfusion."
                 ],
-
+            
+                ["How many types of blood groups are there?"]: [
+                    "There are 8 main blood groups: A+, A-, B+, B-, AB+, AB-, O+, and O-.",
+                    "Blood types are divided into A, B, AB, and O, each with positive or negative Rh factor."
+                ],
+                ["Which blood group is the universal donor?"]: [
+                    "O negative is considered the universal donor.",
+                    "O- blood can be given to almost any patient in emergency situations."
+                ],
+                ["Which blood group is the universal receiver?"]: [
+                    "AB positive is the universal recipient.",
+                    "People with AB+ blood can receive from any blood group."
+                ],
+                ["Who can donate to A+ blood group?"]: [
+                    "A+ can receive blood from A+ , A-, O+ , O-.",
+                    "Compatible donors for A+ are A and O groups with matching Rh factor."
+                ],
+                ["Who can donate to A- blood group?"]: [
+                    "A- can receive from A- and O- only.",
+                    "Only negative Rh donors (A- or O-) can give to A-."
+                ],
+                ["Who can donate to B+ blood group?"]: [
+                    "B+ can receive from B+ , B-, O+ , O-.",
+                    "Compatible donors for B+ include B and O with positive or negative Rh."
+                ],
+                ["Who can donate to B- blood group?"]: [
+                    "B- can receive from B- and O- only.",
+                    "Only negative B or O blood types are safe for B- recipients."
+                ],
+                ["Who can donate to AB+ blood group?"]: [
+                    "AB+ can receive from all blood groups (universal recipient).",
+                    "Any blood type can donate to AB+ safely."
+                ],
+                ["Who can donate to AB- blood group?"]: [
+                    "AB- can receive from AB-, A-, B-, O-.",
+                    "Only negative types of A, B, AB, and O can be given to AB-."
+                ],
+                ["Who can donate to O+ blood group?"]: [
+                    "O+ can receive from O+ and O- only.",
+                    "Only O blood group with matching Rh can be given to O+."
+                ],
+                ["Who can donate to O- blood group?"]: [
+                    "O- can only receive from O- blood group.",
+                    "O- is the rarest type and can only take O-."
+                ],
+                ["Who can O- donate to?"]: [
+                    "O- can donate to all blood groups, universal donor.",
+                    "O- blood is used in emergencies because it is safe for everyone."
+                ],
+                ["Who can AB+ donate to?"]: [
+                    "AB+ can donate only to AB+.",
+                    "Since AB+ already has all antigens, it can only donate to its own type."
+                ],
+                ["Can A+ donate to O+?"]: [
+                    "No, A+ cannot donate to O+.",
+                    "O groups can donate to A, but not the other way around."
+                ],
+                ["Can O+ donate to A+?"]: [
+                    "Yes, O+ can donate to A+.",
+                    "O blood is compatible with A and B groups."
+                ],
+                ["Can A- donate to A+?"]: [
+                    "Yes, A- can donate to A+.",
+                    "Negative Rh can safely donate to positive Rh of same group."
+                ],
+                ["Can B+ donate to AB+?"]: [
+                    "Yes, B+ can donate to AB+.",
+                    "AB+ accepts from all groups including B+."
+                ],
+                ["Can AB- donate to AB+?"]: [
+                    "Yes, AB- can donate to AB+.",
+                    "Positive Rh can receive from both positive and negative."
+                ],
+                ["Can O+ donate to AB+?"]: [
+                    "Yes, O+ can donate to AB+.",
+                    "AB+ is universal receiver, so O+ is compatible."
+                ],
+                ["Can O- donate to AB-?"]: [
+                    "Yes, O- can donate to AB-.",
+                    "O- is universal donor for all negative groups."
+                ],
+                ["Can husband and wife with same blood group donate to each other?"]: [
+                    "Yes, if their Rh factor matches, they can donate to each other.",
+                    "Same blood group with same Rh is safe for transfusion."
+                ],
+                ["What is the safest blood type in emergency?"]: [
+                    "O negative is safest in emergencies.",
+                    "Doctors often use O- when the patient’s blood group is unknown."
+                ],
+                ["Why is O negative blood special?"]: [
+                    "Because it can be given to anyone.",
+                    "O- has no A, B, or Rh antigens, making it universally accepted."
+                ],
+                ["Why is AB positive blood special?"]: [
+                    "Because AB+ can receive blood from all groups.",
+                    "AB+ has all antigens, so it accepts any type of blood."
+                ],
+                ["Can different blood groups marry?"]: [
+                    "Yes, marriage is not affected by blood group.",
+                    "Blood group matters only in transfusion and pregnancy cases."
+                ],
+                ["What happens if wrong blood is given?"]: [
+                    "It can cause serious reactions, even death.",
+                    "Wrong transfusion may lead to immune attack and organ failure."
+                ],
+                ["How much blood is taken in one donation?"]: [
+                    "Around 350ml–450ml is taken.",
+                    "The body replaces this amount within 24–48 hours."
+                ],
+                ["Can pregnant women donate blood?"]: [
+                    "No, pregnant women cannot donate blood.",
+                    "It may risk the health of both mother and child."
+                ],
+                ["Can HIV positive person donate blood?"]: [
+                    "No, HIV positive people cannot donate.",
+                    "It would risk transmitting the infection."
+                ],
+                ["Can hepatitis patients donate blood?"]: [
+                    "No, people with hepatitis cannot donate blood.",
+                    "Infections like Hepatitis B and C disqualify donors."
+                ],
+                ["Can thalassemia patients donate blood?"]: [
+                    "No, thalassemia major patients cannot donate blood.",
+                    "People with severe thalassemia are excluded from donation."
+                ],
+                ["Can cancer patients donate blood?"]: [
+                    "No, cancer patients cannot donate blood.",
+                    "Their condition and treatment make donation unsafe."
+                ],
+                ["How often can a man donate blood?"]: [
+                    "Every 3 months.",
+                    "Men can safely donate 4 times a year."
+                ],
+                ["How often can a woman donate blood?"]: [
+                    "Every 4 months.",
+                    "Women are recommended to donate 3 times a year."
+                ],
+                ["How long does the blood donation process take?"]: [
+                    "About 30–45 minutes in total.",
+                    "The actual blood drawing takes only 8–10 minutes."
+                ],
+                ["How long can blood be stored?"]: [
+                    "Red blood cells can be stored up to 42 days.",
+                    "Plasma can be frozen and stored up to 1 year."
+                ],
+                ["Can plasma be donated separately?"]: [
+                    "Yes, plasma donation is possible.",
+                    "Plasma can be donated every 2 weeks, unlike whole blood."
+                ],
+                ["What is platelet donation?"]: [
+                    "Platelet donation helps cancer and dengue patients.",
+                    "It is collected using a special machine and can be donated every 2 weeks."
+                ],
+                ["Can O- donate plasma to anyone?"]: [
+                    "No, plasma compatibility is different from blood cells.",
+                    "AB is universal plasma donor, not O-."
+                ],
+                ["Which blood group can donate plasma to all?"]: [
+                    "AB blood group is universal plasma donor.",
+                    "AB plasma can be given to anyone regardless of type."
+                ],
+                ["Which blood group can receive plasma from all?"]: [
+                    "O blood group is universal plasma recipient.",
+                    "O plasma can accept from any donor group."
+                ],
+                ["What tests are done before transfusion?"]: [
+                    "Blood grouping and cross-matching are done.",
+                    "Tests check compatibility and infections like HIV, Hepatitis."
+                ],
+                ["Can a person donate blood after vaccination?"]: [
+                    "Yes, after a waiting period depending on vaccine.",
+                    "Usually 14–28 days gap is recommended after vaccination."
+                ],
+                ["Can smokers donate blood?"]: [
+                    "Yes, if they are otherwise healthy.",
+                    "Smokers should avoid smoking at least 2 hours before donation."
+                ],
+                ["Can alcohol drinkers donate blood?"]: [
+                    "Yes, but not within 24 hours of alcohol consumption.",
+                    "Alcohol can affect test results and donor safety."
+                ],
             ["epilepsy", "fits", "seizures"]: [
                 "Epilepsy patients are usually deferred.",
                 "Uncontrolled seizures prevent safe donation."
