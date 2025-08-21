@@ -1194,9 +1194,207 @@ struct ChatbotFAQView: View {
                     "No, blood must be stored in blood banks under strict conditions.",
                     "Home storage would spoil blood quickly."
                 ],
-            
-
-
+    
+                ["How often can a person donate whole blood?"]: [
+                    "Men every 3 months, women every 4 months.",
+                    "This gives enough time for the body to recover."
+                ],
+                ["How often can platelets be donated?"]: [
+                    "Every 2 weeks.",
+                    "Maximum 24 times in a year."
+                ],
+                ["How often can plasma be donated?"]: [
+                    "Once in 2 weeks.",
+                    "Body quickly replaces plasma proteins."
+                ],
+                ["Can HIV positive patients donate blood?"]: [
+                    "No, HIV positive patients cannot donate.",
+                    "To avoid transmission of infection."
+                ],
+                ["Can hepatitis patients donate blood?"]: [
+                    "No, Hepatitis B and C patients are permanently disqualified.",
+                    "Their infection may spread through blood."
+                ],
+                ["What is nucleic acid testing (NAT) in blood?"]: [
+                    "It detects viruses like HIV, Hepatitis early.",
+                    "It ensures safer blood supply."
+                ],
+                ["Why is O negative called emergency blood?"]: [
+                    "Because it can be given to anyone in emergency.",
+                    "It is used when patient’s group is unknown."
+                ],
+                ["Why is AB positive called universal recipient?"]: [
+                    "AB+ can receive blood from all groups.",
+                    "Because it has no antibodies against A, B, or Rh."
+                ],
+                ["Can blood be given without cross matching?"]: [
+                    "Only in life-threatening emergency, O- is used.",
+                    "Otherwise cross-matching is always done."
+                ],
+                ["Why do some patients need irradiated blood?"]: [
+                    "To prevent graft-versus-host disease.",
+                    "Used in cancer and transplant patients."
+                ],
+                ["What is washed red cell transfusion?"]: [
+                    "Blood cells washed to remove plasma proteins.",
+                    "It is safer for allergic patients."
+                ],
+                ["Why is CMV-negative blood needed sometimes?"]: [
+                    "For newborns and transplant patients.",
+                    "To avoid infection from cytomegalovirus."
+                ],
+                ["Can pregnant women donate blood?"]: [
+                    "No, pregnancy disqualifies blood donation.",
+                    "It may harm both mother and baby."
+                ],
+                ["Why are under-18s not allowed to donate?"]: [
+                    "Their body may not handle blood loss well.",
+                    "Legal minimum is 18 years in most countries."
+                ],
+                ["Can a cancer survivor donate blood?"]: [
+                    "Usually not, unless very long-term remission.",
+                    "It depends on doctor’s advice."
+                ],
+                ["Can people with epilepsy donate platelets?"]: [
+                    "No, epilepsy disqualifies donation.",
+                    "Risk of seizure during procedure."
+                ],
+                ["What is stem cell donation?"]: [
+                    "It collects bone marrow or stem cells.",
+                    "Used to treat leukemia and blood cancers."
+                ],
+                ["Is stem cell donation same as blood donation?"]: [
+                    "No, stem cells are collected from bone marrow or blood.",
+                    "Process is longer but safe."
+                ],
+                ["Can stem cells be donated multiple times?"]: [
+                    "Yes, if donor is healthy and matched.",
+                    "But usually once is enough."
+                ],
+                ["What is HLA typing in stem cell donation?"]: [
+                    "HLA means Human Leukocyte Antigen matching.",
+                    "It ensures perfect donor-recipient match."
+                ],
+                ["Why are rare donors important?"]: [
+                    "Some patients have uncommon blood types.",
+                    "Rare donors save lives in such cases."
+                ],
+                ["What is a blood group antigen?"]: [
+                    "Proteins or sugars on red blood cell surface.",
+                    "They decide blood group compatibility."
+                ],
+                ["What is the Kell blood group system?"]: [
+                    "Another blood antigen system besides ABO/Rh.",
+                    "Some patients react to Kell antigens."
+                ],
+                ["What is the Duffy blood group?"]: [
+                    "A rare antigen system important in malaria.",
+                    "Duffy-negative people resist malaria infection."
+                ],
+                ["Can blood be frozen for storage?"]: [
+                    "Yes, rare blood types can be frozen for 10 years.",
+                    "Requires special freezers with glycerol."
+                ],
+                ["Can a donor choose who receives his blood?"]: [
+                    "Yes, in directed donation cases.",
+                    "But usually donations go to blood bank pool."
+                ],
+                ["What is apheresis?"]: [
+                    "A process to collect specific blood components.",
+                    "For example, platelets, plasma, or stem cells."
+                ],
+                ["What is therapeutic phlebotomy?"]: [
+                    "When patients with iron overload donate blood as treatment.",
+                    "It is not for transfusion use."
+                ],
+                ["Can smokers donate blood?"]: [
+                    "Yes, but should avoid smoking 2 hours before/after.",
+                    "To prevent dizziness."
+                ],
+                ["Can alcohol drinkers donate blood?"]: [
+                    "Yes, but not within 24 hours of drinking.",
+                    "Alcohol affects hydration and safety."
+                ],
+                ["What is autologous transfusion?"]: [
+                    "When patient’s own blood is collected and reused.",
+                    "Common before surgery."
+                ],
+                ["What is directed donation?"]: [
+                    "Donation for a specific patient.",
+                    "Family members often do this."
+                ],
+                ["Why is family donation not always safe?"]: [
+                    "Relatives may hide medical issues due to pressure.",
+                    "Voluntary anonymous donation is safest."
+                ],
+                ["Does donating blood make you weak?"]: [
+                    "No, body recovers quickly.",
+                    "Mild tiredness may happen for a day."
+                ],
+                ["Does blood donation reduce life span?"]: [
+                    "No, it has no negative impact on lifespan.",
+                    "Regular donors are often healthier."
+                ],
+                ["Can donating blood improve health?"]: [
+                    "Yes, it reduces iron overload.",
+                    "It may lower heart disease risk."
+                ],
+                ["What food should be eaten before donation?"]: [
+                    "Light meal with fruits, juice, iron-rich foods.",
+                    "Avoid fatty food before donation."
+                ],
+                ["What should not be done after donation?"]: [
+                    "Avoid heavy exercise for 24 hours.",
+                    "Drink plenty of water and rest."
+                ],
+                ["Can blood be donated during fever?"]: [
+                    "No, fever disqualifies donor temporarily.",
+                    "Wait until fully recovered."
+                ],
+                ["Why is hemoglobin checked before donation?"]: [
+                    "To ensure donor has enough blood.",
+                    "It prevents anemia after donation."
+                ],
+                ["What is blood fractionation?"]: [
+                    "Separating blood into components.",
+                    "Red cells, plasma, platelets, cryoprecipitate."
+                ],
+                ["Why do newborns sometimes need O negative blood?"]: [
+                    "Because their blood type may not be confirmed yet.",
+                    "O- is safest for newborn transfusion."
+                ],
+                ["Can Rh- mother receive Rh+ blood?"]: [
+                    "Only in life-threatening emergency with precautions.",
+                    "Normally Rh- mother must get Rh- blood."
+                ],
+                ["Can Rh+ person receive Rh- blood?"]: [
+                    "Yes, Rh+ can safely take Rh-.",
+                    "Rh+ has no problem with Rh- blood."
+                ],
+                ["What is hemolytic transfusion reaction?"]: [
+                    "When wrong blood group destroys patient’s red cells.",
+                    "It can be life-threatening."
+                ],
+                ["Why is universal donor important in accidents?"]: [
+                    "Because patient’s blood type may not be known.",
+                    "O negative saves lives in emergencies."
+                ],
+                ["Why do blood banks need regular donors?"]: [
+                    "Blood has short shelf life.",
+                    "Regular donors ensure steady supply."
+                ],
+                ["Can artificial plasma be made?"]: [
+                    "Yes, plasma expanders exist.",
+                    "But they cannot fully replace real plasma."
+                ],
+                ["Will donating blood hurt?"]: [
+                    "Only mild needle prick pain.",
+                    "No long-term pain or damage."
+                ],
+                ["Is blood tested after donation?"]: [
+                    "Yes, for HIV, Hepatitis, syphilis, malaria.",
+                    "Only safe blood is used for patients."
+                ],
             // Fun facts & awareness
             ["fastest recovery", "recover quickly"]: [
                 "Hydration and iron-rich foods speed recovery.",
