@@ -65,6 +65,7 @@ struct DashboardView: View {
                         DashboardCardView(title: "Register as Donor", icon: "pencil.circle", destination: RegisterAsDonorView())
                         DashboardCardView(title: "Blood Bank Near Me", icon: "map.circle", destination: BloodBankNearMeView())
                         DashboardCardView(title: "Blood Requirements", icon: "exclamationmark.bubble", destination: BloodRequirementsView())
+                        DashboardCardView(title: "Chatbot & FAQ", icon: "message.fill", destination: ChatbotFAQView())
                         DashboardCardView(title: "Donation Stats", icon: "chart.bar", destination: DonationStatsView())
                         DashboardCardView(title: "Donation History", icon: "clock.fill", destination: DonationHistoryView())
                         DashboardCardView(title: "My Certificate", icon: "doc.text.fill", destination: MyCertificateView())
@@ -73,8 +74,6 @@ struct DashboardView: View {
                         DashboardCardView(title: "NGO List", icon: "list.bullet", destination: NGOListView())
                         DashboardCardView(title: "Register for NGO", icon: "person.3.fill", destination: RegisterForNGOView())
 
-                        
-                        DashboardCardView(title: "Chatbot & FAQ", icon: "message.fill", destination: ChatbotFAQView())
                         DashboardCardView(title: "Thalassemia", icon: "bandage.fill", destination: ThalassemiaView())
                         DashboardCardView(title: "About Us", icon: "info.circle", destination: AboutUsView())
                     }
