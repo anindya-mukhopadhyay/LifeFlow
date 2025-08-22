@@ -70,8 +70,9 @@ struct DashboardView: View {
                         DashboardCardView(title: "My Certificate", icon: "doc.text.fill", destination: MyCertificateView())
                         DashboardCardView(title: "Notifications", icon: "bell.fill", destination: NotificationsView())
                         DashboardCardView(title: "About Us", icon: "info.circle", destination: AboutUsView())
+                        DashboardCardView(title: "NGO List", icon: "list.bullet", destination: NGOListView())
 
-                        // ✅ New Options
+                        
                         DashboardCardView(title: "Chatbot & FAQ", icon: "message.fill", destination: ChatbotFAQView())
                         DashboardCardView(title: "Thalassemia", icon: "bandage.fill", destination: ThalassemiaView())
                     }
