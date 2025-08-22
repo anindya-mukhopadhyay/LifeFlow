@@ -69,13 +69,14 @@ struct DashboardView: View {
                         DashboardCardView(title: "Donation History", icon: "clock.fill", destination: DonationHistoryView())
                         DashboardCardView(title: "My Certificate", icon: "doc.text.fill", destination: MyCertificateView())
                         DashboardCardView(title: "Notifications", icon: "bell.fill", destination: NotificationsView())
-                        DashboardCardView(title: "About Us", icon: "info.circle", destination: AboutUsView())
+                       
                         DashboardCardView(title: "NGO List", icon: "list.bullet", destination: NGOListView())
                         DashboardCardView(title: "Register for NGO", icon: "person.3.fill", destination: RegisterForNGOView())
 
                         
                         DashboardCardView(title: "Chatbot & FAQ", icon: "message.fill", destination: ChatbotFAQView())
                         DashboardCardView(title: "Thalassemia", icon: "bandage.fill", destination: ThalassemiaView())
+                        DashboardCardView(title: "About Us", icon: "info.circle", destination: AboutUsView())
                     }
                 }
                 .padding(.bottom, 32)
