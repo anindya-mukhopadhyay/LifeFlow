@@ -1,59 +1,65 @@
-//
-//  BloodCompatibilityView.swift
-//  Life   Flow
-//
-//  Created by Anindya Mukhopadhyay on 23/08/25.
-//
-
 import SwiftUI
 
 struct BloodCompatibilityView: View {
-    // Blood group compatibility data
-    let bloodCompatibility: [String: (donateTo: [String], receiveFrom: [String])] = [
-        "A+": (donateTo: ["A+", "AB+"], receiveFrom: ["A+", "A-", "O+", "O-"]),
-        "A-": (donateTo: ["A+", "A-", "AB+", "AB-"], receiveFrom: ["A-", "O-"]),
-        "B+": (donateTo: ["B+", "AB+"], receiveFrom: ["B+", "B-", "O+", "O-"]),
-        "B-": (donateTo: ["B+", "B-", "AB+", "AB-"], receiveFrom: ["B-", "O-"]),
-        "AB+": (donateTo: ["AB+"], receiveFrom: ["Everyone"]),
-        "AB-": (donateTo: ["AB+", "AB-"], receiveFrom: ["A-", "B-", "AB-", "O-"]),
-        "O+": (donateTo: ["A+", "B+", "AB+", "O+"], receiveFrom: ["O+", "O-"]),
-        "O-": (donateTo: ["Everyone"], receiveFrom: ["O-"])
+    @State private var selectedBloodGroup: String = "A+"
+    
+    let bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
+    
+    // Compatibility Data
+    let compatibility: [String: (donate: [String], receive: [String])] = [
+        "A+": (donate: ["A+", "AB+"], receive: ["A+", "A-", "O+", "O-"]),
+        "A-": (donate: ["A+", "A-", "AB+", "AB-"], receive: ["A-", "O-"]),
+        "B+": (donate: ["B+", "AB+"], receive: ["B+", "B-", "O+", "O-"]),
+        "B-": (donate: ["B+", "B-", "AB+", "AB-"], receive: ["B-", "O-"]),
+        "AB+": (donate: ["AB+"], receive: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]), // Universal Receiver
+        "AB-": (donate: ["AB+", "AB-"], receive: ["A-", "B-", "AB-", "O-"]),
+        "O+": (donate: ["O+", "A+", "B+", "AB+"], receive: ["O+", "O-"]),
+        "O-": (donate: ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"], receive: ["O-"]) // Universal Donor
     ]
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                Text("🩸 Blood Compatibility Chart")
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .padding(.top)
-                
-                ForEach(bloodCompatibility.keys.sorted(), id: \.self) { bloodType in
-                    if let details = bloodCompatibility[bloodType] {
-                        VStack(alignment: .leading, spacing: 8) {
-                            Text("Blood Group: \(bloodType)")
-                                .font(.headline)
-                                .foregroundColor(.red)
-                            
-                            Text("➡️ Can Donate To: \(details.donateTo.joined(separator: ", "))")
-                                .font(.subheadline)
-                                .foregroundColor(.green)
-                            
-                            Text("⬅️ Can Receive From: \(details.receiveFrom.joined(separator: ", "))")
-                                .font(.subheadline)
-                                .foregroundColor(.blue)
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(12)
-                        .shadow(radius: 2)
-                        .padding(.horizontal)
-                    }
+        VStack(spacing: 25) {
+            Text("Blood Compatibility Checker")
+                .font(.title2)
+                .fontWeight(.bold)
+                .padding(.top, 20)
+            
+            Picker("Select Blood Group", selection: $selectedBloodGroup) {
+                ForEach(bloodGroups, id: \.self) { group in
+                    Text(group).tag(group)
                 }
             }
-            .padding(.bottom, 30)
+            .pickerStyle(SegmentedPickerStyle())
+            .padding(.horizontal)
+            
+            if let data = compatibility[selectedBloodGroup] {
+                VStack(alignment: .leading, spacing: 15) {
+                    Text("You Can Donate To:")
+                        .font(.headline)
+                    Text(data.donate.joined(separator: ", "))
+                        .foregroundColor(.green)
+                        .font(.body)
+                    
+                    Divider()
+                    
+                    Text("You Can Receive From:")
+                        .font(.headline)
+                    Text(data.receive.joined(separator: ", "))
+                        .foregroundColor(.red)
+                        .font(.body)
+                }
+                .padding()
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color(.systemGray6))
+                .cornerRadius(15)
+                .padding(.horizontal)
+            }
+            
+            Spacer()
         }
-        .navigationTitle("Compatibility")
+        .navigationTitle("Blood Compatibility")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
+
+
