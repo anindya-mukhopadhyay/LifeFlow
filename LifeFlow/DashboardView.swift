@@ -73,6 +73,9 @@ struct DashboardView: View {
                         DashboardCardView(title: "Blood Compatibility", icon: "drop.triangle", destination: BloodCompatibilityView())
                        
                         DashboardCardView(title: "NGO List", icon: "list.bullet", destination: NGOListView())
+                        
+                        DashboardCardView(title: "Events & Camps", icon: "calendar.circle.fill", destination: EventsView())
+                        
                         DashboardCardView(title: "Register for NGO", icon: "person.3.fill", destination: RegisterForNGOView())
 
                         DashboardCardView(title: "Thalassemia", icon: "bandage.fill", destination: ThalassemiaView())
