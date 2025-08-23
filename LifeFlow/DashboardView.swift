@@ -74,7 +74,7 @@ struct DashboardView: View {
                        
                         DashboardCardView(title: "NGO List", icon: "list.bullet", destination: NGOListView())
                         
-                        //DashboardCardView(title: "Events & Camps", icon: "calendar.circle.fill", destination: EventsView())
+                        DashboardCardView(title: "Events & Camps", icon: "calendar.circle.fill", destination: EventsView())
                         
                         DashboardCardView(title: "Register for NGO", icon: "person.3.fill", destination: RegisterForNGOView())
 
