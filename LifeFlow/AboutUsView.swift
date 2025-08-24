@@ -69,7 +69,7 @@ Whether you’re a hospital searching for blood or a donor ready to help, **Life
                     // Vision
                     SectionCard(title: "Our Vision", content: """
 No life should ever be lost due to a shortage of blood.
-Through **innovation, transparency, and compassion**, we make blood donation **safer, more accessible, and more efficient** — because **every drop counts**.
+Through **innovation, transparency, and compassion**, we make blood donation **safer, more accessible, and more efficient** — because every drop counts.
 """)
                     
                     // Contact
