@@ -16,23 +16,36 @@ struct AboutUsView: View {
     // 📈 Heartbeat Line
     @State private var animateLine = false
     
+    // 🌟 Logo Pulse
+    @State private var pulseLogo = false
+    
     var body: some View {
         ZStack {
             // 🌈 Animated Gradient Background
             LinearGradient(
-                gradient: Gradient(colors: [.red, .purple, .blue, .pink]),
+                gradient: Gradient(colors: [.orange, .orange, .white, .white, .green, .green]),
                 startPoint: gradientShift ? .topLeading : .bottomTrailing,
                 endPoint: gradientShift ? .bottomTrailing : .topLeading
             )
             .ignoresSafeArea()
-            .animation(.easeInOut(duration: 5).repeatForever(autoreverses: true), value: gradientShift)
+            .animation(.easeInOut(duration: 10).repeatForever(autoreverses: true), value: gradientShift)
             .onAppear {
                 gradientShift.toggle()
                 typeWriter()
                 startHeartbeat()
+                startLogoPulse()
             }
             
             VStack(spacing: 30) {
+//                // 🟦 Custom Logo with Pulse
+//                Image("Ashok_Chakra")
+//                    .resizable()
+//                    .scaledToFit()
+//                    .frame(width: 120, height: 120)
+//                    .scaleEffect(pulseLogo ? 1.1 : 1.0)
+//                    .shadow(color: .white.opacity(0.8), radius: 15)
+//                    .padding(.top, 20)
+                
                 // ✍️ Typing Mission Statement
                 Text(animatedText)
                     .font(.title2)
@@ -56,13 +69,15 @@ struct AboutUsView: View {
                             .transition(.opacity)
                     }
                     
-                    Image(systemName: "heart.fill")
+                    Image("Ashok_Chakra")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 100, height: 100)
-                        .foregroundColor(.white)
+                        .foregroundColor(.blue)
                         .scaleEffect(showHeart ? 1.2 : 1.0)
                         .shadow(color: .white.opacity(0.7), radius: 20)
+                        .scaleEffect(pulseLogo ? 1.1 : 1.0)
+                    
                         .onTapGesture {
                             withAnimation(.spring(response: 0.5, dampingFraction: 0.6)) {
                                 showHeart.toggle()
@@ -120,6 +135,13 @@ struct AboutUsView: View {
     private func startHeartbeat() {
         withAnimation(.linear(duration: 2).repeatForever(autoreverses: false)) {
             animateLine.toggle()
+        }
+    }
+    
+    // MARK: - Logo Pulse
+    private func startLogoPulse() {
+        withAnimation(.easeInOut(duration: 1.2).repeatForever(autoreverses: true)) {
+            pulseLogo.toggle()
         }
     }
     
@@ -214,6 +236,6 @@ struct Particle: Identifiable {
     }
 }
 
-//#Preview {
-//    AboutUsView()
-//}
+#Preview {
+    AboutUsView()
+}
