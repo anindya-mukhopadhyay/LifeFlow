@@ -40,16 +40,28 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
+				Preview.txt,
 			);
 			target = 597494042E39597A0008AF5F /* LifeFlow */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		59CE0A482E5BAE6C00501079 /* Exceptions for "LifeFlow" folder in "Compile Sources" phase from "LifeFlow" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = 597494012E39597A0008AF5F /* Sources */;
+			membershipExceptions = (
+				Preview.txt,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		597494072E39597A0008AF5F /* LifeFlow */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				594748EB2E3AB90500B4D3D3 /* Exceptions for "LifeFlow" folder in "LifeFlow" target */,
+				59CE0A482E5BAE6C00501079 /* Exceptions for "LifeFlow" folder in "Compile Sources" phase from "LifeFlow" target */,
 			);
 			path = LifeFlow;
 			sourceTree = "<group>";
