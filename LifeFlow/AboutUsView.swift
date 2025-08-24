@@ -1,87 +1,113 @@
 import SwiftUI
 
 struct AboutUsView: View {
-    @State private var animatedText = ""
-    private let fullText = "No life should ever be lost to a shortage of blood. Through innovation, transparency, and compassion, we make blood donation safer, more accessible, and more efficient — because every drop counts."
-    
-    @State private var showCard = false
-    @State private var gradientShift = false
+    @State private var animateHeartbeat = false
+    @State private var showConfetti = false
     
     var body: some View {
         ZStack {
-            // 🔴 Animated Gradient Background
-            LinearGradient(colors: [.red, .pink, .purple],
-                           startPoint: gradientShift ? .topLeading : .bottomTrailing,
-                           endPoint: gradientShift ? .bottomTrailing : .topLeading)
-                .ignoresSafeArea()
-                .animation(.easeInOut(duration: 6).repeatForever(autoreverses: true), value: gradientShift)
+            LinearGradient(
+                gradient: Gradient(colors: [.red.opacity(0.8), .black]),
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 30) {
                 
-                // 🩸 Title
+                // MARK: - Heartbeat Line
+                HeartbeatLine()
+                    .stroke(Color.red, lineWidth: 3)
+                    .frame(height: 100)
+                    .padding(.horizontal)
+                    .overlay(
+                        Image(systemName: "heart.fill")
+                            .font(.system(size: 40))
+                            .foregroundColor(.red)
+                            .scaleEffect(animateHeartbeat ? 1.2 : 1.0)
+                            .animation(.easeInOut(duration: 0.6).repeatForever(autoreverses: true), value: animateHeartbeat)
+                            .onAppear { animateHeartbeat = true }
+                            .offset(x: 120, y: -20)
+                    )
+                
+                // MARK: - Title
                 Text("Our Mission")
                     .font(.system(size: 36, weight: .bold, design: .rounded))
                     .foregroundColor(.white)
                     .shadow(radius: 10)
-                    .padding(.top, 50)
                 
-                // ✨ Typing Animation Text
-                Text(animatedText)
-                    .font(.system(size: 20, weight: .medium, design: .rounded))
-                    .foregroundColor(.white)
+                // MARK: - Description
+                Text("To build a world where no life is lost due to a shortage of blood. Through innovation, transparency, and compassion, we aim to make blood donation more accessible, efficient, and safe.")
+                    .font(.system(size: 18, design: .rounded))
+                    .foregroundColor(.white.opacity(0.9))
                     .multilineTextAlignment(.center)
                     .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(Color.black.opacity(0.25))
-                            .shadow(radius: 10)
-                    )
+                    .background(.ultraThinMaterial.opacity(0.3))
+                    .cornerRadius(20)
                     .padding(.horizontal)
                 
-                // 🪄 Animated Fade-in Card
-                if showCard {
-                    VStack(spacing: 15) {
-                        Image(systemName: "drop.fill")
-                            .font(.system(size: 50))
-                            .foregroundStyle(.white)
-                            .shadow(radius: 5)
-                        
-                        Text("Every Drop Counts ❤️")
-                            .font(.title3.bold())
-                            .foregroundColor(.white)
+                // MARK: - Interactable Heart
+                Button(action: {
+                    withAnimation {
+                        showConfetti.toggle()
                     }
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 25)
-                            .fill(Color.black.opacity(0.25))
-                            .shadow(radius: 10)
-                    )
-                    .transition(.scale.combined(with: .opacity))
+                }) {
+                    Image(systemName: "heart.circle.fill")
+                        .font(.system(size: 60))
+                        .foregroundColor(.red)
+                        .shadow(radius: 10)
+                        .scaleEffect(showConfetti ? 1.3 : 1.0)
+                        .animation(.spring(), value: showConfetti)
                 }
-                
-                Spacer()
+                .overlay(
+                    ConfettiView()
+                        .opacity(showConfetti ? 1 : 0)
+                        .animation(.easeInOut, value: showConfetti)
+                )
             }
             .padding()
         }
-        .onAppear {
-            gradientShift.toggle()
-            typeText()
-            withAnimation(.easeInOut(duration: 1.5).delay(5)) {
-                showCard = true
-            }
+    }
+}
+
+// MARK: - Heartbeat Shape
+struct HeartbeatLine: Shape {
+    func path(in rect: CGRect) -> Path {
+        var path = Path()
+        let midY = rect.midY
+        
+        path.move(to: CGPoint(x: 0, y: midY))
+        path.addLine(to: CGPoint(x: rect.width * 0.2, y: midY))
+        path.addLine(to: CGPoint(x: rect.width * 0.3, y: midY - 40))
+        path.addLine(to: CGPoint(x: rect.width * 0.4, y: midY + 40))
+        path.addLine(to: CGPoint(x: rect.width * 0.5, y: midY))
+        path.addLine(to: CGPoint(x: rect.width, y: midY))
+        
+        return path
+    }
+}
+
+// MARK: - Confetti View
+struct ConfettiView: View {
+    var body: some View {
+        ForEach(0..<20, id: \.self) { i in
+            Circle()
+                .fill(Color.random)
+                .frame(width: 8, height: 8)
+                .offset(
+                    x: CGFloat.random(in: -80...80),
+                    y: CGFloat.random(in: -80...80)
+                )
         }
     }
-    
-    // Typing Effect Logic
-    private func typeText() {
-        animatedText = ""
-        var charIndex = 0.0
-        for letter in fullText {
-            DispatchQueue.main.asyncAfter(deadline: .now() + charIndex * 0.05) {
-                animatedText.append(letter)
-            }
-            charIndex += 1
-        }
+}
+
+// MARK: - Random Color Extension
+extension Color {
+    static var random: Color {
+        return Color(hue: .random(in: 0...1),
+                     saturation: 0.8,
+                     brightness: 0.9)
     }
 }
 
