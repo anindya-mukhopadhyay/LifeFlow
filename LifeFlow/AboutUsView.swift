@@ -31,8 +31,8 @@ struct AboutUsView: View {
                 startPoint: gradientShift ? .topLeading : .bottomTrailing,
                 endPoint: gradientShift ? .bottomTrailing : .topLeading
             )
-            .opacity(colorScheme == .dark ? 0.3 : 1.0)   // darker feel at night
-            .background(colorScheme == .dark ? Color.black : Color.white) // base color
+            .opacity(colorScheme == .dark ? 0.3 : 1.0)
+            .background(colorScheme == .dark ? Color.black : Color.white)
             .ignoresSafeArea()
             .animation(.easeInOut(duration: 10).repeatForever(autoreverses: true), value: gradientShift)
             .onAppear {
@@ -48,19 +48,19 @@ struct AboutUsView: View {
                 Text(animatedText)
                     .font(.title2)
                     .fontWeight(.semibold)
-                    .foregroundColor(colorScheme == .dark ? .white : .black) // adaptive
+                    .foregroundColor(colorScheme == .dark ? .white : .white)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 20)
                 
                 // 📈 Heartbeat Line
                 HeartbeatShape()
                     .trim(from: 0, to: animateLine ? 1 : 0)
-                    .stroke(colorScheme == .dark ? .white : .black,
+                    .stroke(colorScheme == .dark ? .white : .white,
                             style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
                     .frame(height: 150)
                     .padding(.horizontal, 30)
                 
-                // ❤️ Rotating + Pulsating Logo (interactive)
+                // ❤️ Rotating + Pulsating Logo (interactive with border)
                 ZStack {
                     if showConfetti {
                         ConfettiView()
@@ -72,10 +72,22 @@ struct AboutUsView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 180, height: 180)
-                        .rotationEffect(.degrees(rotation))   // 🔄 Continuous rotation
-                        .scaleEffect(pulseLogo ? 1.2 : 1.0)   // 💓 Pulse
-                        .scaleEffect(showHeart ? 1.2 : 1.0)   // On tap scaling
+                        .rotationEffect(.degrees(rotation))
+                        .scaleEffect(pulseLogo ? 1.2 : 1.0)
+                        .scaleEffect(showHeart ? 1.2 : 1.0)
                         .shadow(color: .white.opacity(colorScheme == .dark ? 0.8 : 0.4), radius: 20)
+                        .overlay( // Indian flag border appears on tap
+                            Circle()
+                                .strokeBorder(
+                                    LinearGradient(
+                                        colors: [.orange, .white, .green],
+                                        startPoint: .top,
+                                        endPoint: .bottom
+                                    ),
+                                    lineWidth: showDetails ? 6 : 0
+                                )
+                                .animation(.easeInOut, value: showDetails)
+                        )
                         .onTapGesture {
                             withAnimation(.spring(response: 0.5, dampingFraction: 0.6)) {
                                 showHeart.toggle()
@@ -85,22 +97,33 @@ struct AboutUsView: View {
                         }
                 }
                 
-                // 📜 Expandable Details Section
+                // 📜 Expandable Details Section with Border
                 if showDetails {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("""
                         Welcome to **LifeFlow** – your trusted Smart Blood Donation System made by **Anindya Mukhopadhyay** ❤️
                         """)
                         .font(.system(size: 16, design: .rounded))
-                        .foregroundColor(colorScheme == .dark ? .white : .black) // adaptive
+                        .foregroundColor(colorScheme == .dark ? .white : .white)
                         .multilineTextAlignment(.leading)
                         .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 20)
-                                .fill(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
-                        )
-                        .shadow(color: .black.opacity(0.4), radius: 8)
                     }
+                    .background(
+                        RoundedRectangle(cornerRadius: 20)
+                            .fill(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
+                            .overlay( // Indian flag border
+                                RoundedRectangle(cornerRadius: 20)
+                                    .strokeBorder(
+                                        LinearGradient(
+                                            colors: [.orange, .white, .green],
+                                            startPoint: .leading,
+                                            endPoint: .trailing
+                                        ),
+                                        lineWidth: 3
+                                    )
+                            )
+                    )
+                    .shadow(color: .black.opacity(2.4), radius: 10)
                     .padding(.horizontal, 20)
                     .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
@@ -162,23 +185,13 @@ struct HeartbeatShape: Shape {
         let width = rect.width
         
         path.move(to: CGPoint(x: 0, y: midY))
-        
-        // Flat
         path.addLine(to: CGPoint(x: width * 0.2, y: midY))
-        
-        // Spike 1
         path.addLine(to: CGPoint(x: width * 0.25, y: midY - 60))
         path.addLine(to: CGPoint(x: width * 0.3, y: midY + 60))
         path.addLine(to: CGPoint(x: width * 0.35, y: midY))
-        
-        // Flat
         path.addLine(to: CGPoint(x: width * 0.6, y: midY))
-        
-        // Spike 2
         path.addLine(to: CGPoint(x: width * 0.65, y: midY - 40))
         path.addLine(to: CGPoint(x: width * 0.7, y: midY))
-        
-        // Flat End
         path.addLine(to: CGPoint(x: width, y: midY))
         
         return path
@@ -199,15 +212,11 @@ struct ConfettiView: View {
                     .opacity(particle.opacity)
             }
         }
-        .onAppear {
-            generateConfetti()
-        }
+        .onAppear { generateConfetti() }
     }
     
     private func generateConfetti() {
-        particles = (0..<20).map { _ in
-            Particle.random()
-        }
+        particles = (0..<20).map { _ in Particle.random() }
         
         withAnimation(.easeOut(duration: 1.0)) {
             for i in particles.indices {
@@ -219,7 +228,6 @@ struct ConfettiView: View {
     }
 }
 
-// MARK: - Particle Model
 struct Particle: Identifiable {
     let id = UUID()
     var position: CGPoint = CGPoint(x: 100, y: 100)
