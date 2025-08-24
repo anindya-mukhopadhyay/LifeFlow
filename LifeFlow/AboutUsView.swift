@@ -8,115 +8,123 @@ import SwiftUI
 
 struct AboutUsView: View {
     var body: some View {
-        ScrollView {
-            VStack(spacing: 25) {
-                
-                // App Logo / Icon
-                ZStack {
-                    Circle()
-                        .fill(Color.red.opacity(0.1))
-                        .frame(width: 140, height: 140)
+        ZStack {
+            // Gradient Background
+            LinearGradient(gradient: Gradient(colors: [Color.red.opacity(0.2), Color.white]),
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing)
+                .ignoresSafeArea()
+            
+            ScrollView {
+                VStack(spacing: 30) {
                     
-                    Image(systemName: "drop.fill")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 70, height: 70)
-                        .foregroundColor(.red)
-                }
-                .padding(.top, 20)
-                
-                // Intro / Mission
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Welcome to **LifeFlow**")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .foregroundColor(.red)
+                    // Logo with Glow
+                    ZStack {
+                        Circle()
+                            .fill(Color.red.opacity(0.15))
+                            .frame(width: 160, height: 160)
+                            .blur(radius: 12)
+                        
+                        Image(systemName: "drop.fill")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 80, height: 80)
+                            .foregroundColor(.red)
+                    }
+                    .padding(.top, 40)
                     
-                    Text("""
-Your trusted Smart Blood Donation System made by **Anindya Mukhopadhyay**.  
+                    // Welcome Section
+                    GlassCard {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Welcome to LifeFlow")
+                                .font(.title)
+                                .fontWeight(.bold)
+                                .foregroundColor(.red)
+                            
+                            Text("""
+A trusted Smart Blood Donation System by **Anindya Mukhopadhyay**.  
 
-Our mission is simple yet powerful: to connect life-saving donors with those in urgent need. Whether you’re a hospital searching for a match or a donor ready to help, **LifeFlow makes the process seamless, safe, and reliable**.
+We connect life-saving donors with those in urgent need.  
+Whether you’re a hospital searching for blood or a donor willing to help, **LifeFlow makes the journey seamless, safe, and reliable.**
 """)
-                        .font(.body)
-                        .foregroundColor(.primary)
-                }
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 20).fill(Color(.systemGray6)))
-                .shadow(radius: 2)
-                
-                // Features
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Why LifeFlow?")
-                        .font(.title2)
-                        .bold()
-                        .foregroundColor(.red)
+                        }
+                    }
                     
-                    FeatureRow(icon: "bolt.fill", text: "Real-time requests")
-                    FeatureRow(icon: "car.fill", text: "Uber-style pickups")
-                    FeatureRow(icon: "cross.case.fill", text: "Verified Hospitals")
-                    FeatureRow(icon: "heart.text.square.fill", text: "Verified Donors")
-                    FeatureRow(icon: "brain.head.profile", text: "Intelligent Matching Engine")
-                    FeatureRow(icon: "lock.shield.fill", text: "Secure & Privacy-first Platform")
-                }
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 20).fill(Color(.systemGray6)))
-                .shadow(radius: 2)
-                
-                // Vision
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("Our Vision")
-                        .font(.title2)
-                        .bold()
-                        .foregroundColor(.red)
+                    // Features Section
+                    GlassCard {
+                        VStack(alignment: .leading, spacing: 14) {
+                            Text("Why LifeFlow?")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.red)
+                            
+                            FeatureRow(icon: "bolt.fill", text: "Real-time requests")
+                            FeatureRow(icon: "car.fill", text: "Uber-style pickups")
+                            FeatureRow(icon: "cross.case.fill", text: "Verified Hospitals")
+                            FeatureRow(icon: "heart.text.square.fill", text: "Verified Donors")
+                            FeatureRow(icon: "brain.head.profile", text: "Intelligent Matching Engine")
+                            FeatureRow(icon: "lock.shield.fill", text: "Secure & Privacy-first Platform")
+                        }
+                    }
                     
-                    Text("""
-No life should ever be lost to a shortage of blood.  
+                    // Vision Section
+                    GlassCard {
+                        VStack(alignment: .leading, spacing: 12) {
+                            Text("Our Vision")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.red)
+                            
+                            Text("""
+No life should ever be lost due to a shortage of blood.  
 Through **innovation, transparency, and compassion**, we make blood donation **safer, more accessible, and more efficient** — because **every drop counts**.
 """)
-                        .font(.body)
-                        .foregroundColor(.primary)
+                        }
+                    }
+                    
+                    // Contact Section
+                    GlassCard {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Contact Us")
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                                .foregroundColor(.red)
+                            
+                            ContactRow(icon: "envelope.fill", text: "youanindya1@gmail.com")
+                            ContactRow(icon: "globe", text: "www.lifeflow.com")
+                            ContactRow(icon: "mappin.and.ellipse", text: "Newtown, Kolkata, West Bengal, India")
+                        }
+                    }
+                    
+                    Spacer(minLength: 40)
                 }
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 20).fill(Color(.systemGray6)))
-                .shadow(radius: 2)
-                
-                // Contact
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Contact Us")
-                        .font(.title2)
-                        .bold()
-                        .foregroundColor(.red)
-                    
-                    HStack {
-                        Image(systemName: "envelope.fill").foregroundColor(.red)
-                        Text("youanindya1@gmail.com")
-                    }
-                    
-                    HStack {
-                        Image(systemName: "globe").foregroundColor(.red)
-                        Text("www.lifeflow.com")
-                    }
-                    
-                    HStack {
-                        Image(systemName: "mappin.and.ellipse").foregroundColor(.red)
-                        Text("Newtown, Kolkata, West Bengal, India")
-                    }
-                }
-                .font(.subheadline)
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 20).fill(Color(.systemGray6)))
-                .shadow(radius: 2)
-                
-                Spacer()
+                .padding(.horizontal, 20)
             }
-            .padding(.horizontal)
         }
         .navigationTitle("About Us")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
 
-// MARK: - Reusable Feature Row
+// MARK: - Reusable Glass Card
+struct GlassCard<Content: View>: View {
+    let content: Content
+    init(@ViewBuilder content: () -> Content) {
+        self.content = content()
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 10) {
+            content
+        }
+        .padding()
+        .background(.ultraThinMaterial) // Glass effect
+        .cornerRadius(20)
+        .shadow(color: Color.black.opacity(0.05), radius: 8, x: 0, y: 4)
+    }
+}
+
+// MARK: - Feature Row
 struct FeatureRow: View {
     var icon: String
     var text: String
@@ -125,10 +133,26 @@ struct FeatureRow: View {
         HStack(spacing: 12) {
             Image(systemName: icon)
                 .foregroundColor(.red)
-                .frame(width: 24, height: 24)
+                .frame(width: 22, height: 22)
             Text(text)
-                .foregroundColor(.primary)
             Spacer()
         }
+        .font(.body)
+    }
+}
+
+// MARK: - Contact Row
+struct ContactRow: View {
+    var icon: String
+    var text: String
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: icon)
+                .foregroundColor(.red)
+                .frame(width: 22, height: 22)
+            Text(text)
+        }
+        .font(.subheadline)
     }
 }
