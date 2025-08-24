@@ -1,93 +1,66 @@
 import SwiftUI
 
 struct AboutUsView: View {
+    @State private var animateGlow = false
+    @State private var fadeInText = false
+    
     var body: some View {
-        ScrollView {
+        ZStack {
+            // Background gradient animation
+            LinearGradient(
+                gradient: Gradient(colors: [.red.opacity(0.6), .pink.opacity(0.4), .white]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+            .opacity(0.9)
+            
             VStack(spacing: 30) {
+                // Animated Heart Icon
+                Image(systemName: "heart.fill")
+                    .font(.system(size: 80))
+                    .foregroundColor(.pink)
+                    .shadow(color: .red.opacity(0.7), radius: animateGlow ? 20 : 5)
+                    .scaleEffect(animateGlow ? 1.6 : 1.0)
+                    .animation(
+                        .easeInOut(duration: 1.5).repeatForever(autoreverses: true),
+                        value: animateGlow
+                    )
                 
-                // Header with gradient background
-                ZStack {
-                    LinearGradient(gradient: Gradient(colors: [Color.red.opacity(0.9), Color.pink.opacity(0.8)]),
-                                   startPoint: .topLeading,
-                                   endPoint: .bottomTrailing)
-                        .frame(height: 220)
-                        .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-                        .shadow(radius: 8)
-                    
-                    VStack(spacing: 10) {
-                        Image(systemName: "drop.fill")
-                            .font(.system(size: 50))
-                            .foregroundColor(.white)
-                        Text("About LifeLine")
-                            .font(.title.bold())
-                            .foregroundColor(.white)
-                        Text("Every Drop Counts")
-                            .font(.subheadline)
-                            .foregroundColor(.white.opacity(0.9))
-                    }
-                }
-                .padding(.horizontal)
-                .padding(.top)
+                // Title
+                Text("Our Mission")
+                    .font(.largeTitle.bold())
+                    .foregroundColor(.primary)
+                    .opacity(fadeInText ? 1 : 0)
+                    .offset(y: fadeInText ? 0 : 20)
+                    .animation(.easeOut(duration: 1).delay(0.5), value: fadeInText)
                 
-                // Mission Statement Card
-                VStack(alignment: .leading, spacing: 16) {
-                    Text("Our Mission")
-                        .font(.headline)
-                        .foregroundColor(.red)
-                    
-                    Text("No life should ever be lost to a shortage of blood. Through innovation, transparency, and compassion, we make blood donation safer, more accessible, and more efficient — because every drop counts.")
-                        .font(.body)
-                        .foregroundColor(.primary)
-                        .multilineTextAlignment(.leading)
-                }
-                .padding()
-                .background(Color(.systemBackground))
-                .cornerRadius(20)
-                .shadow(color: .black.opacity(0.08), radius: 8, x: 0, y: 4)
-                .padding(.horizontal)
+                // Mission Statement
+                Text("""
+                No life should ever be lost to a shortage of blood.  
+                Through innovation, transparency, and compassion,  
+                we make blood donation safer, more accessible,  
+                and more efficient — because every drop counts.
+                """)
+                    .multilineTextAlignment(.center)
+                    .font(.title3)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 20)
+                    .opacity(fadeInText ? 1 : 0)
+                    .offset(y: fadeInText ? 0 : 20)
+                    .animation(.easeOut(duration: 1).delay(1), value: fadeInText)
                 
-                // Vision / Values Section
-                VStack(alignment: .leading, spacing: 20) {
-                    Text("Our Values")
-                        .font(.headline)
-                        .foregroundColor(.red)
-                    
-                    HStack(alignment: .top, spacing: 15) {
-                        Image(systemName: "lightbulb.fill")
-                            .foregroundColor(.yellow)
-                            .font(.title2)
-                        Text("Innovation — Leveraging technology to simplify and transform the donation process.")
-                            .font(.subheadline)
-                    }
-                    
-                    HStack(alignment: .top, spacing: 15) {
-                        Image(systemName: "person.2.fill")
-                            .foregroundColor(.blue)
-                            .font(.title2)
-                        Text("Compassion — Putting people first and building trust in every interaction.")
-                            .font(.subheadline)
-                    }
-                    
-                    HStack(alignment: .top, spacing: 15) {
-                        Image(systemName: "shield.checkerboard")
-                            .foregroundColor(.green)
-                            .font(.title2)
-                        Text("Transparency — Ensuring clarity, safety, and reliability at every step.")
-                            .font(.subheadline)
-                    }
-                }
-                .padding()
-                .background(Color(.systemBackground))
-                .cornerRadius(20)
-                .shadow(color: .black.opacity(0.08), radius: 8, x: 0, y: 4)
-                .padding(.horizontal)
-                
-                Spacer(minLength: 40)
+                Spacer()
             }
+            .padding()
         }
-        .background(Color(.systemGroupedBackground).ignoresSafeArea())
+        .onAppear {
+            animateGlow = true
+            fadeInText = true
+        }
     }
 }
-//#Preview {
-//    AboutUsView()
-//}
+
+#Preview {
+    AboutUsView()
+}
