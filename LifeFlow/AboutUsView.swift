@@ -20,14 +20,19 @@ struct AboutUsView: View {
     @State private var pulseLogo = false
     @State private var rotation = 0.0
     
+    // 🌓 Detect system Dark/Light mode
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         ZStack {
-            // 🌈 Animated Gradient Background
+            // 🌈 Animated Gradient Background (Indian Flag colors)
             LinearGradient(
                 gradient: Gradient(colors: [.orange, .orange, .white, .white, .green, .green]),
                 startPoint: gradientShift ? .topLeading : .bottomTrailing,
                 endPoint: gradientShift ? .bottomTrailing : .topLeading
             )
+            .opacity(colorScheme == .dark ? 0.3 : 1.0)   // darker feel at night
+            .background(colorScheme == .dark ? Color.black : Color.white) // base color
             .ignoresSafeArea()
             .animation(.easeInOut(duration: 10).repeatForever(autoreverses: true), value: gradientShift)
             .onAppear {
@@ -43,14 +48,15 @@ struct AboutUsView: View {
                 Text(animatedText)
                     .font(.title2)
                     .fontWeight(.semibold)
-                    .foregroundColor(.white)
+                    .foregroundColor(colorScheme == .dark ? .white : .black) // adaptive
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 20)
                 
                 // 📈 Heartbeat Line
                 HeartbeatShape()
                     .trim(from: 0, to: animateLine ? 1 : 0)
-                    .stroke(.white, style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
+                    .stroke(colorScheme == .dark ? .white : .black,
+                            style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
                     .frame(height: 150)
                     .padding(.horizontal, 30)
                 
@@ -69,7 +75,7 @@ struct AboutUsView: View {
                         .rotationEffect(.degrees(rotation))   // 🔄 Continuous rotation
                         .scaleEffect(pulseLogo ? 1.2 : 1.0)   // 💓 Pulse
                         .scaleEffect(showHeart ? 1.2 : 1.0)   // On tap scaling
-                        .shadow(color: .white.opacity(0.7), radius: 20)
+                        .shadow(color: .white.opacity(colorScheme == .dark ? 0.8 : 0.4), radius: 20)
                         .onTapGesture {
                             withAnimation(.spring(response: 0.5, dampingFraction: 0.6)) {
                                 showHeart.toggle()
@@ -84,23 +90,16 @@ struct AboutUsView: View {
                     VStack(alignment: .leading, spacing: 12) {
                         Text("""
                         Welcome to **LifeFlow** – your trusted Smart Blood Donation System made by **Anindya Mukhopadhyay** ❤️
-                        
-                        Our mission is to connect life-saving donors with those in urgent need.  
-                        Whether you're a hospital looking for a match, or a donor willing to help, LifeFlow simplifies the process:
-                        
-                        ✅ Real-time requests  
-                        ✅ Uber-style pickups  
-                        ✅ Verified Hospitals  
-                        ✅ Verified Donors  
-                        ✅ Intelligent matching engine  
-                        ✅ Secure & privacy-first platform
                         """)
                         .font(.system(size: 16, design: .rounded))
-                        .foregroundColor(.white)
+                        .foregroundColor(colorScheme == .dark ? .white : .black) // adaptive
                         .multilineTextAlignment(.leading)
                         .padding()
-                        .background(RoundedRectangle(cornerRadius: 20).fill(Color.black.opacity(0.3)))
-                        .shadow(radius: 8)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(colorScheme == .dark ? Color.white.opacity(0.1) : Color.black.opacity(0.1))
+                        )
+                        .shadow(color: .black.opacity(0.4), radius: 8)
                     }
                     .padding(.horizontal, 20)
                     .transition(.move(edge: .bottom).combined(with: .opacity))
