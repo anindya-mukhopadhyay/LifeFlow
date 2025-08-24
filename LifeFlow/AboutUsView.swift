@@ -21,7 +21,8 @@ Our mission is to connect life-saving donors with those in urgent need. Whether 
 
 ✅ Real-time requests  
 ✅ Uber-style pickups  
-✅ Verified hospitals & donors  
+✅ Verified Hospitals 
+✅ Verified Donors  
 ✅ Intelligent matching engine  
 ✅ Secure & privacy-first platform
 """)
