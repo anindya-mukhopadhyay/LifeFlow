@@ -34,7 +34,7 @@ Our mission is to connect life-saving donors with those in urgent need. Whether 
                     .bold()
 
                 Text("""
-To build a world where no life is lost due to a shortage of blood. Through innovation, transparency, and compassion, we aim to make blood donation more accessible, efficient, and safe.
+No life should ever be lost to a shortage of blood. Through innovation, transparency, and compassion, we make blood donation safer, more accessible, and more efficient — because every drop counts.
 """)
 
                 Text("Contact Us")
