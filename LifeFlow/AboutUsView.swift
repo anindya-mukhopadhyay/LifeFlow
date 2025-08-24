@@ -16,8 +16,9 @@ struct AboutUsView: View {
     // 📈 Heartbeat Line
     @State private var animateLine = false
     
-    // 🌟 Logo Pulse
+    // 🌟 Logo Pulse + Rotation
     @State private var pulseLogo = false
+    @State private var rotation = 0.0
     
     var body: some View {
         ZStack {
@@ -34,18 +35,10 @@ struct AboutUsView: View {
                 typeWriter()
                 startHeartbeat()
                 startLogoPulse()
+                startRotation()
             }
             
             VStack(spacing: 30) {
-//                // 🟦 Custom Logo with Pulse
-//                Image("Ashok_Chakra")
-//                    .resizable()
-//                    .scaledToFit()
-//                    .frame(width: 120, height: 120)
-//                    .scaleEffect(pulseLogo ? 1.1 : 1.0)
-//                    .shadow(color: .white.opacity(0.8), radius: 15)
-//                    .padding(.top, 20)
-                
                 // ✍️ Typing Mission Statement
                 Text(animatedText)
                     .font(.title2)
@@ -61,23 +54,22 @@ struct AboutUsView: View {
                     .frame(height: 150)
                     .padding(.horizontal, 30)
                 
-                // ❤️ Pulsating Heart (interactive with confetti + details)
+                // ❤️ Rotating + Pulsating Logo (interactive)
                 ZStack {
                     if showConfetti {
                         ConfettiView()
-                            .frame(width: 200, height: 200)
+                            .frame(width: 180, height: 180)
                             .transition(.opacity)
                     }
                     
                     Image("Ashok_Chakra")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 100, height: 100)
-                        .foregroundColor(.blue)
-                        .scaleEffect(showHeart ? 1.2 : 1.0)
+                        .frame(width: 180, height: 180)
+                        .rotationEffect(.degrees(rotation))   // 🔄 Continuous rotation
+                        .scaleEffect(pulseLogo ? 1.2 : 1.0)   // 💓 Pulse
+                        .scaleEffect(showHeart ? 1.2 : 1.0)   // On tap scaling
                         .shadow(color: .white.opacity(0.7), radius: 20)
-                        .scaleEffect(pulseLogo ? 1.1 : 1.0)
-                    
                         .onTapGesture {
                             withAnimation(.spring(response: 0.5, dampingFraction: 0.6)) {
                                 showHeart.toggle()
@@ -142,6 +134,13 @@ struct AboutUsView: View {
     private func startLogoPulse() {
         withAnimation(.easeInOut(duration: 1.2).repeatForever(autoreverses: true)) {
             pulseLogo.toggle()
+        }
+    }
+    
+    // MARK: - Continuous Rotation
+    private func startRotation() {
+        withAnimation(.linear(duration: 5).repeatForever(autoreverses: false)) {
+            rotation = 360
         }
     }
     
