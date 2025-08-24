@@ -88,6 +88,6 @@ struct AboutUsView: View {
         .background(Color(.systemGroupedBackground).ignoresSafeArea())
     }
 }
-#Preview {
-    AboutUsView()
-}
+//#Preview {
+//    AboutUsView()
+//}
