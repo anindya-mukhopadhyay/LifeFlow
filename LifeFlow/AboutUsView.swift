@@ -54,7 +54,7 @@ struct AboutUsView: View {
                 
                 // 📈 Heartbeat Line
                 HeartbeatShape()
-                    .trim(from: 0, to: animateLine ? 1 : 0)
+                    .trim(from: 0, to: animateLine ? 1.2 : 0)
                     .stroke(colorScheme == .dark ? .white : .white,
                             style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
                     .frame(height: 150)
@@ -242,6 +242,8 @@ struct Particle: Identifiable {
     }
 }
 
-#Preview {
-    AboutUsView()
-}
+
+
+//#Preview {
+//    AboutUsView()
+//}
