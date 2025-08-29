@@ -1,28 +1,28 @@
+////
+////  NGOListView.swift
+////  Life   Flow
+////
+////  Created by Anindya Mukhopadhyay on 23/08/25.
+////
 //
-//  NGOListView.swift
-//  Life   Flow
+//import SwiftUI
 //
-//  Created by Anindya Mukhopadhyay on 23/08/25.
+//// 🔵 NGO List Screen
+//struct NGOListView: View {
+//    var body: some View {
+//        VStack {
+//            Text("NGO List")
+//                .font(.largeTitle)
+//                .fontWeight(.bold)
+//                .padding()
 //
-
-import SwiftUI
-
-// 🔵 NGO List Screen
-struct NGOListView: View {
-    var body: some View {
-        VStack {
-            Text("NGO List")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding()
-
-            List {
-                Text("Red Cross")
-                Text("Smile Foundation")
-                Text("Blood Connect")
-                Text("CRY – Child Rights and You")
-            }
-        }
-        .navigationTitle("NGO List")
-    }
-}
+//            List {
+//                Text("Red Cross")
+//                Text("Smile Foundation")
+//                Text("Blood Connect")
+//                Text("CRY – Child Rights and You")
+//            }
+//        }
+//        .navigationTitle("NGO List")
+//    }
+//}
