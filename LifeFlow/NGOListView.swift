@@ -10,7 +10,6 @@ struct NGOListView: View {
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding()
-
             List {
                 Text("Red Cross")
                 Text("Smile Foundation")
