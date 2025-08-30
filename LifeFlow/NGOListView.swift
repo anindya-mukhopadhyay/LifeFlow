@@ -1,4 +1,3 @@
-//
 //  NGOListView.swift
 //  Life   Flow
 //
