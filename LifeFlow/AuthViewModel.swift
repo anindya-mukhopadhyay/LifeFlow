@@ -1,78 +1,49 @@
-// AuthViewModel.swift
 import Foundation
-import SwiftUI
+import FirebaseAuth
 
 class AuthViewModel: ObservableObject {
-    @Published var isLoggedIn = false
-
-    let baseURL = "http://localhost:3000/api" // Replace with your server URL
-
-    func login(email: String, password: String) {
-        guard let url = URL(string: "\(baseURL)/login") else { return }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        let body = ["email": email, "password": password]
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
-
-        URLSession.shared.dataTask(with: request) { data, _, _ in
-            guard let data = data else { return }
-
-            do {
-                let result = try JSONDecoder().decode(APIResponse.self, from: data)
-
-                DispatchQueue.main.async {
-                    if result.success {
-                        self.isLoggedIn = true
-                    } else {
-                        print("Login failed: \(result.message)")
-                    }
-                }
-
-            } catch {
-                print("Error decoding login response: \(error)")
-            }
-        }.resume()
+    @Published var user: FirebaseAuth.User? = nil  // ✅ Explicit type
+    @Published var isLoading = false
+    @Published var errorMessage = ""
+    
+    init() {
+        self.user = Auth.auth().currentUser
     }
-
+    
     func signup(email: String, password: String) {
-        guard let url = URL(string: "\(baseURL)/signup") else { return }
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-
-        let body = ["email": email, "password": password]
-        request.httpBody = try? JSONSerialization.data(withJSONObject: body)
-
-        URLSession.shared.dataTask(with: request) { data, _, _ in
-            guard let data = data else { return }
-
-            do {
-                let result = try JSONDecoder().decode(APIResponse.self, from: data)
-
-                DispatchQueue.main.async {
-                    if result.success {
-                        self.isLoggedIn = true
-                    } else {
-                        print("Signup failed: \(result.message)")
-                    }
+        isLoading = true
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            DispatchQueue.main.async {
+                self.isLoading = false
+                if let error = error {
+                    self.errorMessage = error.localizedDescription
+                } else {
+                    self.user = result?.user
                 }
-
-            } catch {
-                print("Error decoding signup response: \(error)")
             }
-        }.resume()
+        }
     }
-
+    
+    func login(email: String, password: String) {
+        isLoading = true
+        Auth.auth().signIn(withEmail: email, password: password) { result, error in
+            DispatchQueue.main.async {
+                self.isLoading = false
+                if let error = error {
+                    self.errorMessage = error.localizedDescription
+                } else {
+                    self.user = result?.user
+                }
+            }
+        }
+    }
+    
     func logout() {
-        isLoggedIn = false
+        do {
+            try Auth.auth().signOut()
+            self.user = nil
+        } catch {
+            self.errorMessage = error.localizedDescription
+        }
     }
-}
-
-struct APIResponse: Decodable {
-    let success: Bool
-    let message: String
 }
