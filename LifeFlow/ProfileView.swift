@@ -196,18 +196,15 @@
 
 
 
-
 import SwiftUI
 import UIKit
 import FirebaseAuth
 import FirebaseFirestore
 
-
 // MARK: - ProfileView (all-in-one)
 struct ProfileView: View {
-    // 🔧 Configure your Cloudinary details here
-    private let cloudName = "djoaxuvqs"          // <- your cloud name
-    private let uploadPreset = "LifeFlow" // <- must be UNSIGNED for client-side upload
+    private let cloudName = "djoaxuvqs"          // <- your Cloudinary cloud name
+    private let uploadPreset = "LifeFlow"        // <- must be UNSIGNED
 
     // Fields
     @State private var name: String = ""
@@ -228,7 +225,6 @@ struct ProfileView: View {
 
     var body: some View {
         ZStack {
-            // 🌿 Background Gradient
             LinearGradient(
                 gradient: Gradient(colors: [Color.green.opacity(0.3), Color.teal.opacity(0.4)]),
                 startPoint: .topLeading,
@@ -238,6 +234,7 @@ struct ProfileView: View {
 
             ScrollView {
                 VStack(spacing: 20) {
+                    
                     // 🌿 Profile Image
                     Group {
                         if let selectedImage = selectedImage {
@@ -266,7 +263,6 @@ struct ProfileView: View {
                     .shadow(radius: 8)
                     .padding(.top, 40)
 
-                    // 🌿 Upload / Change Button (only in edit mode)
                     if isEditing {
                         Button(action: { showingImagePicker = true }) {
                             Text("Upload / Change Photo")
@@ -292,7 +288,7 @@ struct ProfileView: View {
                         ProfileRow(title: "Email", text: $email, isEditing: false, icon: "envelope.fill")
                         ProfileRow(title: "Phone", text: $phone, isEditing: isEditing, icon: "phone.fill")
 
-                        // 🌿 DOB
+                        // DOB
                         HStack {
                             Image(systemName: "calendar")
                                 .foregroundColor(.green)
@@ -312,7 +308,7 @@ struct ProfileView: View {
                             }
                         }
 
-                        // 🌿 Age (read-only)
+                        // Age
                         HStack {
                             Image(systemName: "number.circle.fill")
                                 .foregroundColor(.green)
@@ -346,7 +342,6 @@ struct ProfileView: View {
                     .shadow(radius: 8)
                     .padding(.horizontal)
 
-                    // 🌿 Edit / Cancel Button
                     Button(action: { isEditing.toggle() }) {
                         Text(isEditing ? "Cancel" : "Edit Profile")
                             .font(.headline)
@@ -372,7 +367,7 @@ struct ProfileView: View {
         .navigationTitle("My Profile 🌱")
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showingImagePicker) {
-            ImagePicker(image: $selectedImage) { image in
+            ProfileImagePicker(image: $selectedImage) { image in
                 uploadImageToCloudinary(image)
             }
         }
@@ -402,7 +397,6 @@ struct ProfileView: View {
                     self.uploadedImageURL = savedURL
                 }
             } else {
-                // initialize name from Auth if Firestore empty
                 self.name = user.displayName ?? ""
                 self.calculateAge()
             }
@@ -414,13 +408,11 @@ struct ProfileView: View {
         guard let user = Auth.auth().currentUser else { return }
         calculateAge()
 
-        // Update Firebase Auth profile too (name + photo)
         let change = user.createProfileChangeRequest()
         change.displayName = name
         if let urlStr = uploadedImageURL { change.photoURL = URL(string: urlStr) }
         change.commitChanges { _ in }
 
-        // Save to Firestore
         db.collection("users").document(user.uid).setData([
             "name": name,
             "phone": phone,
@@ -438,7 +430,7 @@ struct ProfileView: View {
         }
     }
 
-    // MARK: - Upload to Cloudinary (Unsigned)
+    // MARK: - Upload to Cloudinary
     private func uploadImageToCloudinary(_ image: UIImage) {
         guard let data = image.jpegData(compressionQuality: 0.85) else { return }
         isUploading = true
@@ -453,7 +445,6 @@ struct ProfileView: View {
                 switch result {
                 case .success(let secureURL):
                     self.uploadedImageURL = secureURL
-                    // also update Auth photoURL immediately
                     if let user = Auth.auth().currentUser {
                         let change = user.createProfileChangeRequest()
                         change.photoURL = URL(string: secureURL)
@@ -467,7 +458,7 @@ struct ProfileView: View {
     }
 }
 
-// MARK: - Reusable Row (kept in same file)
+// MARK: - ProfileRow
 struct ProfileRow: View {
     var title: String
     @Binding var text: String
@@ -496,8 +487,8 @@ struct ProfileRow: View {
     }
 }
 
-// MARK: - ImagePicker (UIKit bridge, same file)
-struct ImagePicker: UIViewControllerRepresentable {
+// MARK: - ProfileImagePicker (renamed to avoid conflict)
+struct ProfileImagePicker: UIViewControllerRepresentable {
     @Binding var image: UIImage?
     var onPicked: (UIImage) -> Void
 
@@ -514,9 +505,9 @@ struct ImagePicker: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIImagePickerController, context: Context) {}
 
     final class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-        let parent: ImagePicker
+        let parent: ProfileImagePicker
         let onPicked: (UIImage) -> Void
-        init(_ parent: ImagePicker, onPicked: @escaping (UIImage) -> Void) {
+        init(_ parent: ProfileImagePicker, onPicked: @escaping (UIImage) -> Void) {
             self.parent = parent
             self.onPicked = onPicked
         }
@@ -535,7 +526,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
 }
 
-// MARK: - Minimal Cloudinary uploader (unsigned, no SDK)
+// MARK: - CloudinaryUploader
 enum CloudinaryUploadError: Error, LocalizedError {
     case badResponse
     case server(String)
@@ -562,7 +553,6 @@ struct CloudinaryUploader {
         req.httpMethod = "POST"
         req.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
 
-        // Build multipart body
         var body = Data()
         func appendFormField(name: String, value: String) {
             body.append("--\(boundary)\r\n".data(using: .utf8)!)
@@ -577,16 +567,15 @@ struct CloudinaryUploader {
             body.append("\r\n".data(using: .utf8)!)
         }
 
-        appendFormField(name: "upload_preset", value: uploadPreset) // must be UNSIGNED
+        appendFormField(name: "upload_preset", value: uploadPreset)
         appendFileField(name: "file", filename: "profile.jpg", mimeType: "image/jpeg", fileData: data)
         body.append("--\(boundary)--\r\n".data(using: .utf8)!)
         req.httpBody = body
 
-        URLSession.shared.dataTask(with: req) { data, resp, error in
+        URLSession.shared.dataTask(with: req) { data, _, error in
             if let error = error { completion(.failure(error)); return }
             guard let data = data else { completion(.failure(CloudinaryUploadError.badResponse)); return }
 
-            // Try decode success or error payload
             if let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any] {
                 if let secure = json["secure_url"] as? String {
                     completion(.success(secure)); return
