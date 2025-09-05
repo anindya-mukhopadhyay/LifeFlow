@@ -1,19 +1,5 @@
-//import SwiftUI
-//import Foundation
-//import UIKit
-//
-//struct ProfileView: View {
-//    // MARK: - Persistent storage
-//    @AppStorage("userName") private var name: String = "Anindya Mukhopadhyay"
-//    @AppStorage("userEmail") private var email: String = "you@example.com"
-//    @AppStorage("userPhone") private var phone: String = ""
-//    @AppStorage("userAddress") private var address: String = ""
-//    @AppStorage("userPincode") private var pincode: String = ""
-//    @AppStorage("emergencyContactNumber") private var emergencyNumber: String = ""
-//    @AppStorage("emergencyContactRelation") private var emergencyRelation: String = "Mother"
-//    @AppStorage("userBloodGroup") private var bloodGroup: String = "A-"
-//    @AppStorage("userDOB") private var dob: Date = Date()
-//    @AppStorage("profileImageData") private var profileImageData: Data?
+
+
 //
 //    // MARK: - View states
 //    @State private var showingImagePicker = false
