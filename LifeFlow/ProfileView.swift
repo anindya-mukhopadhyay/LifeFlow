@@ -1,28 +1,4 @@
 
-//                            Picker("Relation", selection: $emergencyRelation) {
-//                                ForEach(relations, id: \.self) { relation in
-//                                    Text(relation)
-//                                }
-//                            }
-//                            .pickerStyle(MenuPickerStyle())
-//                        }
-//                        .padding()
-//                        .background(Color(UIColor.secondarySystemBackground))
-//                        .cornerRadius(10)
-//                        
-//                        Picker("Blood Group", selection: $bloodGroup) {
-//                            ForEach(bloodGroups, id: \.self) { group in
-//                                Text(group)
-//                            }
-//                        }
-//                        .pickerStyle(SegmentedPickerStyle())
-//                        
-//                        DatePicker("Date of Birth", selection: $dob, displayedComponents: .date)
-//                    }
-//                    
-//                    Button("Save") { editingProfile = false }
-//                        .padding(.top, 8)
-
 import SwiftUI
 import UIKit
 import FirebaseAuth
