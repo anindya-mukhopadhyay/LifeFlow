@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		590F7FAC2E44043B00FBB0B7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 590F7FAB2E44043B00FBB0B7 /* FirebaseAuth */; };
 		590F7FAE2E44043B00FBB0B7 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 590F7FAD2E44043B00FBB0B7 /* FirebaseCore */; };
+		594500DF2E6B8C55001D62AE /* Cloudinary in Frameworks */ = {isa = PBXBuildFile; productRef = 594500DE2E6B8C55001D62AE /* Cloudinary */; };
 		599400FE2E57BE6B00853E8F /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 599400FD2E57BE6B00853E8F /* FirebaseFirestore */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				594500DF2E6B8C55001D62AE /* Cloudinary in Frameworks */,
 				590F7FAE2E44043B00FBB0B7 /* FirebaseCore in Frameworks */,
 				590F7FAC2E44043B00FBB0B7 /* FirebaseAuth in Frameworks */,
 				599400FE2E57BE6B00853E8F /* FirebaseFirestore in Frameworks */,
@@ -149,6 +151,7 @@
 				590F7FAB2E44043B00FBB0B7 /* FirebaseAuth */,
 				590F7FAD2E44043B00FBB0B7 /* FirebaseCore */,
 				599400FD2E57BE6B00853E8F /* FirebaseFirestore */,
+				594500DE2E6B8C55001D62AE /* Cloudinary */,
 			);
 			productName = LifeFlow;
 			productReference = 597494052E39597A0008AF5F /* LifeFlow.app */;
@@ -234,6 +237,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				590F7FA62E44035400FBB0B7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				594500DD2E6B8C55001D62AE /* XCRemoteSwiftPackageReference "cloudinary_ios" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 597494062E39597A0008AF5F /* Products */;
@@ -610,6 +614,14 @@
 				minimumVersion = 12.1.0;
 			};
 		};
+		594500DD2E6B8C55001D62AE /* XCRemoteSwiftPackageReference "cloudinary_ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cloudinary/cloudinary_ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.2.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -622,6 +634,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 590F7FA62E44035400FBB0B7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
+		};
+		594500DE2E6B8C55001D62AE /* Cloudinary */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 594500DD2E6B8C55001D62AE /* XCRemoteSwiftPackageReference "cloudinary_ios" */;
+			productName = Cloudinary;
 		};
 		599400FD2E57BE6B00853E8F /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
