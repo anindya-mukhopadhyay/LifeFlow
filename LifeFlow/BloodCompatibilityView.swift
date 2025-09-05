@@ -4,17 +4,16 @@ struct BloodCompatibilityView: View {
     @State private var selectedBloodGroup: String = "A+"
     
     let bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
-    
-    // Compatibility Data
+
     let compatibility: [String: (donate: [String], receive: [String])] = [
         "A+": (donate: ["A+", "AB+"], receive: ["A+", "A-", "O+", "O-"]),
         "A-": (donate: ["A+", "A-", "AB+", "AB-"], receive: ["A-", "O-"]),
         "B+": (donate: ["B+", "AB+"], receive: ["B+", "B-", "O+", "O-"]),
         "B-": (donate: ["B+", "B-", "AB+", "AB-"], receive: ["B-", "O-"]),
-        "AB+": (donate: ["AB+"], receive: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]), // Universal Receiver
+        "AB+": (donate: ["AB+"], receive: ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]), //Universal Receiver
         "AB-": (donate: ["AB+", "AB-"], receive: ["A-", "B-", "AB-", "O-"]),
         "O+": (donate: ["O+", "A+", "B+", "AB+"], receive: ["O+", "O-"]),
-        "O-": (donate: ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"], receive: ["O-"]) // Universal Donor
+        "O-": (donate: ["O+", "O-", "A+", "A-", "B+", "B-", "AB+", "AB-"], receive: ["O-"]) //Universal Donor
     ]
     
     var body: some View {
