@@ -1,29 +1,4 @@
 
-//                
-//                if editingProfile {
-//                    // MARK: Editable fields
-//                    Group {
-//                        validatedTextField("Name", text: $name, maxLength: 30)
-//                        validatedTextField("Email", text: $email, maxLength: 50, keyboard: .emailAddress)
-//                        
-//                        HStack {
-//                            prefixBox("+91")
-//                            validatedTextField("Phone Number", text: $phone, maxLength: 10, numbersOnly: true, keyboard: .numberPad)
-//                        }
-//                        
-//                        validatedTextField("Address", text: $address, maxLength: 50)
-//                        validatedTextField("Pincode", text: $pincode, maxLength: 6, numbersOnly: true, keyboard: .numberPad)
-//                        
-//                        // Emergency contact in one box
-//                        VStack(alignment: .leading, spacing: 6) {
-//                            Text("Emergency Contact")
-//                                .font(.headline)
-//                            
-//                            HStack {
-//                                prefixBox("+91")
-//                                validatedTextField("Number", text: $emergencyNumber, maxLength: 10, numbersOnly: true, keyboard: .numberPad)
-//                            }
-//                            
 //                            Picker("Relation", selection: $emergencyRelation) {
 //                                ForEach(relations, id: \.self) { relation in
 //                                    Text(relation)
