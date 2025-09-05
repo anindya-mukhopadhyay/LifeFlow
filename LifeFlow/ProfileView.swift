@@ -1,44 +1,4 @@
 
-
-//
-//    // MARK: - View states
-//    @State private var showingImagePicker = false
-//    @State private var editingProfile = false
-//    
-//    // MARK: - Options
-//    private let bloodGroups = ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]
-//    private let relations = ["Mother", "Father", "Brother", "Sister", "Grandfather", "Grandmother", "GF", "BF", "Husband", "Wife"]
-//
-//    var body: some View {
-//        ScrollView {
-//            VStack(spacing: 24) {
-//                
-//                // MARK: Profile Image
-//                ZStack(alignment: .bottomTrailing) {
-//                    if let data = profileImageData,
-//                       let uiImage = UIImage(data: data) {
-//                        Image(uiImage: uiImage)
-//                            .resizable()
-//                            .scaledToFill()
-//                            .frame(width: 120, height: 120)
-//                            .clipShape(Circle())
-//                    } else {
-//                        Image(systemName: "person.crop.circle.fill")
-//                            .resizable()
-//                            .scaledToFit()
-//                            .frame(width: 120, height: 120)
-//                            .foregroundColor(.red)
-//                    }
-//                    
-//                    Button(action: { showingImagePicker = true }) {
-//                        Image(systemName: "camera.fill")
-//                            .foregroundColor(.white)
-//                            .padding(8)
-//                            .background(Color.red)
-//                            .clipShape(Circle())
-//                    }
-//                }
-//                .padding(.top, 16)
 //                
 //                if editingProfile {
 //                    // MARK: Editable fields
